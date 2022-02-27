@@ -2,17 +2,20 @@
 
 
 
-add_action('wp_ajax_nopriv_maxart_remove_logo', 'maxart_remove_logo');
+
 add_action('wp_ajax_maxart_remove_logo', 'maxart_remove_logo');
 
 function maxart_remove_logo()
 {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') :
+        if (isset($_POST['imageremove'])) :
+            $url = WP_CONTENT_DIR . '\\uploads\\'  ;
+            $image_name = $url . $_POST['imageremove'];
+            if (file_exists($image_name)) :
+                unlink($image_name);
+            endif;
+        endif;
+    endif;
 
-
-
-
-    echo '<div>error</div>';
-
-    // echo '<div>'. $image_name .'</div>' ; 
     wp_die();
 }
