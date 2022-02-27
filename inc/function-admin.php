@@ -182,6 +182,10 @@ function maxart_settings_option_facebook_verification($input)
     $input =  (!empty(@$input) ? str_replace($CHECK, '', trim(sanitize_text_field($input))) : '');
     return $input;
 }
+function maxart_settings_option_custom_css_verification($input){
+    $output = esc_textarea($input);
+    return $output;
+}
 
 /*
 *   **********************
@@ -231,8 +235,8 @@ function maxart_field_custom_css()
     $css =  get_option('maxart_register_custom_css') ;
     $value = (!empty($css) ? esc_attr($css) : '');
     // echo '<input type="text" name="maxart_register_custom_css" id="maxart_register_custom_css" value="'. $value .'" />';
-    echo '<div id="editor">ghadeer</div>';
-    echo '<textarea id="maxart_register_custom_css" name="maxart_register_custom_css" rows="4" cols="50">'. $value .'</textarea>';
+    echo '<div id="editor" >'.$value.'</div>';
+    echo '<textarea id="maxart_register_custom_css" hidden name="maxart_register_custom_css" rows="4" cols="50">'. $value .'</textarea>';
 }
 
 /*
