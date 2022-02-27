@@ -1,0 +1,37 @@
+.co-box{
+    display: flex;
+}
+.logo-img {
+  background-repeat: no-repeat !important;
+  min-height: 100px !important;
+  background-size: contain !important;
+  width: 100px !important;
+}
+.deleate-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.msg{
+    display: none;
+}
+.msg p{
+    
+    border-left: 3px solid  #00a32a ;
+    padding: 20px;
+    margin: 20px;
+    font-size: 15x;
+    font-weight: bold;
+}
+.msg-error{
+    display: none;
+}
+.msg-error p {
+    border-left: 3px solid  #dc3545 ;
+    padding: 20px;
+    margin: 20px;
+    font-size: 15x;
+    font-weight: bold;
+}
+
+
