@@ -13,6 +13,7 @@ function maxart_remove_logo()
             $image_name = $url . $_POST['imageremove'];
             if (file_exists($image_name)) :
                 unlink($image_name);
+                update_option('maxart_register_logo','');
             endif;
         endif;
     endif;

@@ -56,12 +56,14 @@ function maxart_custom_options()
     register_setting('maxart-settings-option', 'maxart_register_logo', 'maxart_settings_option_logo_verification');
     // SiteName Register
     register_setting('maxart-settings-option', 'maxart_register_namesite', 'maxart_settings_option_namesite_verification');
+    // PhoneNumber Register
+    register_setting('maxart-settings-option', 'maxart_register_phone_number', 'maxart_settings_option_phone_number_verification');
     // Facebook Register
     register_setting('maxart-settings-option', 'maxart_register_facebook', 'maxart_settings_option_facebook_verification');
     // Twitter Register
     register_setting('maxart-settings-option', 'maxart_register_twitter', 'maxart_settings_option_twitter_verification');
     // Logo Field
-
+    // logo Site Field
     add_settings_field(
         'maxart-field-Logo',
         'Logo Site',
@@ -69,10 +71,19 @@ function maxart_custom_options()
         'maxart_settings',
         'maxart-general-options'
     );
+    // Name Site Field
     add_settings_field(
         'maxart-field-namesite',
         'Name Site',
         'maxart_field_namesite',
+        'maxart_settings',
+        'maxart-general-options'
+    );
+    // Phone Number Field
+    add_settings_field(
+        'maxart-field-phone-number',
+        'Phone Nmber',
+        'maxart_field_phone_number',
         'maxart_settings',
         'maxart-general-options'
     );
@@ -93,11 +104,30 @@ function maxart_custom_options()
         'maxart-general-options'
     );
     // Form page Theme Support
-    register_setting('maxart-theme-support-option', 'maxart_register_postformat');
+    register_setting('maxart-theme-support-option', 'maxart_register_post_format');
+    register_setting('maxart-theme-support-option', 'maxart_register_contact_us');
     add_settings_section('maxart-section-theme-support-option', '', 'maxart_section_theme_support_settings', 'maxart_settings_theme_support');
+    // POST FORMAT  Field
+    add_settings_field(
+        'maxart-fidle-post-format',
+        'Post Format',
+        'maxart_field_post_format',
+        'maxart_settings_theme_support',
+        'maxart-section-theme-support-option'
+    );
+    // Contuct US  Field
+    add_settings_field(
+        'maxart-fidle-contact-us',
+        'Contact us',
+        'maxart_field_contact_us',
+        'maxart_settings_theme_support',
+        'maxart-section-theme-support-option'
+    );
+
     // Form Page Custom CSS  
-    register_setting('maxart-register-custom-css-option', 'maxart_register_custom_css' ,'maxart_settings_option_custom_css_verification');
+    register_setting('maxart-register-custom-css-option', 'maxart_register_custom_css', 'maxart_settings_option_custom_css_verification');
     add_settings_section('maxart-section-custom-css-option', '', 'maxart_section_custom_css_settings', 'maxart_submenu_custom_css');
+
     // TextArea  Field
     add_settings_field(
         'maxart-fidle-custom-css',
@@ -125,11 +155,9 @@ function maxart_settings_option_logo_verification($input)
 
         if (!in_array(strtolower($image_extention), $allowed_extention)) :
             $errors[] = '<div>Extension not available<div>';
-            return "Extension";
         endif;
         if ($image_size > 3) :
             $errors[] = '<div>File size is large<div>';
-            return "size";
         endif;
         if (empty($errors)) :
             $image_random_name = rand(0, 1000000000) . '.' . $image_extention;
@@ -137,21 +165,13 @@ function maxart_settings_option_logo_verification($input)
             $input = $image_random_name;
             return $input;
         else :
-            foreach ($errors as $error) {
-                echo $error;
-                return "not empty in under random name";
-            }
+            $input = get_option('maxart_register_logo');
+            $output = (!empty($input) ? $input : "");
+            return $output;
         endif;
     else :
-
-        $file_url =  WP_CONTENT_DIR . '\\uploads\\' .  get_option('maxart_register_logo');
-        if (file_exists($file_url)) {
-            $input = get_option('maxart_register_logo');
-            return $input;
-        } else {
-            return '';
-        }
-
+        $input = get_option('maxart_register_logo');
+        return $input;
     endif;
 }
 function maxart_settings_option_namesite_verification($input)
@@ -162,6 +182,16 @@ function maxart_settings_option_namesite_verification($input)
     );
     $input =  (!empty(@$input) ? str_replace($CHECK, '', trim(sanitize_text_field($input))) : '');
     return $input;
+}
+// Register Phone Number
+function maxart_settings_option_phone_number_verification($input)
+{
+    $CHECK = array(
+        '@', '/', '\\', '"', '\'', '|', '$', '.', ',', '(', ')', '!', '#', '%', '^', '&', ':',
+        '*', '_', '+', '=', ';', 'HTTPS', 'https', 'http', 'http', '{', '}', '[', ']', '<', '>'
+    );
+    $output = str_replace($CHECK, '', absint($input));
+    return $output;
 }
 function maxart_settings_option_twitter_verification($input)
 {
@@ -182,7 +212,8 @@ function maxart_settings_option_facebook_verification($input)
     $input =  (!empty(@$input) ? str_replace($CHECK, '', trim(sanitize_text_field($input))) : '');
     return $input;
 }
-function maxart_settings_option_custom_css_verification($input){
+function maxart_settings_option_custom_css_verification($input)
+{
     $output = esc_textarea($input);
     return $output;
 }
@@ -202,7 +233,7 @@ function maxart_field_logo()
         echo '<input type="text" name="maxart_register_logo" hidden id="maxart_register_logo"  value= "' . $output . '">';
     else :
         $logo_image =  esc_url(content_url('uploads/') . $logo_site);
-        echo '<div class="co-box">' ; 
+        echo '<div class="co-box">';
         echo '<div class="img-thumbnail logo-img" style="background-image:url(' . esc_url($logo_image) . ');"></div><a data-image="' . esc_attr($logo_site) . '" class="btn btn-danger deleate-btn" data-url="' . esc_url(__(admin_url('admin-ajax.php'))) . '" id="remove_logo_site">Delete</a>';
         echo "</div>";
     endif;
@@ -213,6 +244,12 @@ function maxart_field_namesite()
     $name_site = get_option('maxart_register_namesite');
     $output =  (!empty($name_site) ? esc_attr($name_site) : '');
     echo '<input type="text" name="maxart_register_namesite" id="maxart_register_namesite"  value= "' . $output . '">';
+}
+// Output Field maxart-Field- phone Number
+function maxart_field_phone_number()
+{
+    $phone_number = get_option('maxart_register_phone_number');
+    echo '<input type="text" id="maxart_register_phone_number" name="maxart_register_phone_number" value="' . esc_attr($phone_number) . '"/>';
 }
 // Output field maxart-fidle-twitter
 function maxart_field_twitter()
@@ -232,11 +269,31 @@ function maxart_field_facebook()
 // Output field maxart-field-Custom-CSS
 function maxart_field_custom_css()
 {
-    $css =  get_option('maxart_register_custom_css') ;
+    $css =  get_option('maxart_register_custom_css');
     $value = (!empty($css) ? esc_attr($css) : '');
     // echo '<input type="text" name="maxart_register_custom_css" id="maxart_register_custom_css" value="'. $value .'" />';
-    echo '<div id="editor" >'.$value.'</div>';
-    echo '<textarea id="maxart_register_custom_css" style="display:none;" name="maxart_register_custom_css" rows="4" cols="50">'. $value .'</textarea>';
+    echo '<div id="editor" >' . $value . '</div>';
+    echo '<textarea id="maxart_register_custom_css" style="display:none;" name="maxart_register_custom_css" rows="4" cols="50">' . $value . '</textarea>';
+}
+// Output field maxart-field-post-format
+function maxart_field_post_format()
+{
+    $post_format = array('gallery', 'image', 'link');
+    $get_option = get_option('maxart_register_post_format');
+    $output = '' ;
+    foreach ($post_format as $format) :
+        $chacked = ((@$get_option[$format] == 1 ) ? 'checked' : ''); 
+        $output .= '<label> ' . $format . ':    </label>';
+        $output .= '<input type="checkbox" '.$chacked.' id="maxart_register_post_format" name="maxart_register_post_format[' . $format . ']" value="1">';
+    endforeach;
+    echo $output ;
+}
+//Output field maxart-feild-contact-us
+function maxart_field_contact_us(){
+    // maxart_register_contact_us
+    $get_option = get_option('maxart_register_contact_us');
+    $chacked = ((@$get_option == 1) ? 'checked' : '');
+    echo '<input type="checkbox" '.$chacked.' id="maxart_register_contact_us" name="maxart_register_contact_us" value="1">';
 }
 
 /*

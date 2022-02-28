@@ -3,6 +3,11 @@ let textarea = document.getElementById("maxart_register_custom_css");
 var editor = ace.edit("editor");
 editor.setTheme("ace/theme/monokai");
 editor.session.setMode("ace/mode/css");
+editor.setOptions({
+   enableBasicAutocompletion: true,
+   enableSnippets: true,
+   enableLiveAutocompletion: true
+});
 let form = document.getElementById('form-css');
 
 
