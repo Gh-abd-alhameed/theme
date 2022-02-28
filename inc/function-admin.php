@@ -236,7 +236,7 @@ function maxart_field_custom_css()
     $value = (!empty($css) ? esc_attr($css) : '');
     // echo '<input type="text" name="maxart_register_custom_css" id="maxart_register_custom_css" value="'. $value .'" />';
     echo '<div id="editor" >'.$value.'</div>';
-    echo '<textarea id="maxart_register_custom_css" hidden name="maxart_register_custom_css" rows="4" cols="50">'. $value .'</textarea>';
+    echo '<textarea id="maxart_register_custom_css" style="display:none;" name="maxart_register_custom_css" rows="4" cols="50">'. $value .'</textarea>';
 }
 
 /*

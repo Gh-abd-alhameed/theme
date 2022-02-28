@@ -5,9 +5,12 @@ editor.setTheme("ace/theme/monokai");
 editor.session.setMode("ace/mode/css");
 let form = document.getElementById('form-css');
 
-form.onsubmit = ()=>{
-    textarea.innerHTML = editor.getSession.getValue();
-}
+
+editor.addEventListener ('change' , ()=>{
+   console.log(editor.getValue())
+   textarea.innerHTML = editor.getValue();
+
+})
 
 
 
