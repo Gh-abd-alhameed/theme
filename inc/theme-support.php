@@ -24,8 +24,6 @@ if (!empty($get_option_post_type)) {
     add_action('init', "maxart_register_post_type");
     add_filter('manage_contact-us_posts_columns', 'maxart_reset_contact_columns');
     add_filter('manage_contact-us_posts_custom_column', 'maxart_set_contact_columns', 10, 2);
-    
-    
 }
 //add post type Contact Us
 function maxart_register_post_type()
@@ -91,20 +89,20 @@ function maxart_custom_box_meta_callback($post)
     wp_nonce_field('maxart_save_email_data', 'maxart_wp_nonce_name_metabox_email');
     $value = get_post_meta($post->ID, '_contact-email', true);
     echo '<label for="maxart_wp_nonce_name_metabox_email">User email adress</label>';
-    echo '<input type="email" id="maxart_wp_nonce_name_metabox_email" name="maxart_name_input_val" value="'.esc_attr($value).'" size="25"/>';
+    echo '<input type="email" id="maxart_wp_nonce_name_metabox_email" name="maxart_name_input_val" value="' . esc_attr($value) . '" size="25"/>';
 }
 
 function maxart_wp_nonce_action_metabox_email($post_id)
 {
     if (!isset($_POST['maxart_wp_nonce_name_metabox_email'])) {
-        return ;
+        return;
     }
     if (!wp_verify_nonce($_POST['maxart_wp_nonce_name_metabox_email'], 'maxart_save_email_data')) {
-        return ;
+        return;
     }
-    
+
     if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
-        return ;
+        return;
     }
     $data =  $_POST['maxart_name_input_val'];
     $my_data = sanitize_text_field($data);
@@ -120,8 +118,8 @@ function maxart_add_theme_support_others()
     $defaults_custom_headers = array(
         'default-image'          => '',
         'random-default'         => false,
-        'width'                  => 400,
-        'height'                 => 600,
+        'width'                  => 2000,
+        'height'                 => 2000,
         'flex-height'            => false,
         'flex-width'             => false,
         'default-text-color'     => '',
@@ -150,3 +148,17 @@ function maxart_add_theme_support_others()
 }
 
 add_action('after_setup_theme', 'maxart_add_theme_support_others');
+
+
+
+// add menu
+function maxart_add_menu()
+{
+    add_theme_support('menus');
+    register_nav_menus(array(
+        'Top_Page' => 'Top Page',
+        'Nav_menu' => 'Nav Menu',
+    ));
+}
+add_action('init', 'maxart_add_menu');
+

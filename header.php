@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+   
     <?php if (is_singular() && pings_open(get_queried_object())) : ?>
         <link rel="pingback" href="<?php bloginfo("pingback"); ?>">
     <?php endif; ?>
@@ -22,4 +23,60 @@
     <?php wp_head(); ?>
 </head>
 
-<body>
+<body <?php body_class(); ?>>
+
+
+
+    <!-- Start appbar -->
+    <section class="appbar">
+        <div class='container'>
+            <div class="row">
+                <div class="col-6">
+                    <?php $site_phone = get_option('maxart_register_phone_number');  ?>
+                    <span> Phone: </span>
+                    <a>+<?php echo esc_html($site_phone); ?></a>
+                </div>
+                <div class="col-6 me-auto social-net">
+                    <?php
+                    $facebook = get_option('maxart_register_facebook');
+                    $twitter = get_option('maxart_register_twitter');
+                    ?>
+                    <a href="https://facebook.com/<?php echo esc_attr($facebook); ?>"><i class="fa-brands fa-facebook-square" style="width: 25px; height:25px;"></i></a>
+                    <a href="https://twitter.com/<?php echo esc_attr($twitter); ?>"><i class="fa-brands fa-twitter-square"style="width: 25px; height:25px;"></i></i></a>
+                </div>
+            </div> <!-- row -->
+        </div><!-- container -->
+    </section><!-- appbar -->
+    <!-- end appbar -->
+    <section id="main_menu" class="main-menu">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <?php
+                $logo_url = content_url('uploads/') . get_option('maxart_register_logo');
+                $logo = (!empty(get_option('maxart_register_logo')) ? $logo_url : get_template_directory_uri() . '/assets/img/logo.jpg');
+                ?>
+                <div class="logo-site" style="background-image:url(<?php echo  esc_url($logo); ?>);"></div>
+
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button><!--  navbar-toggler -->
+                <div class="collapse navbar-collapse " id="navbarNavDropdown">
+                    <?php
+                    wp_nav_menu(array(
+                        'menu' => 'Nav_menu',
+                        'menu_class' => 'navbar-nav me-auto ms-auto mb-2 mb-lg-0',
+                        'container' => '',
+                        'walker' => new custom_menu(),
+                    )); ?>
+                    <div class="vr bg-transparent "></div>
+
+                </div> <!-- collapse -->
+            </div><!-- container -->
+        </nav><!-- navbar -->
+    </section>
+    <!-- End Navbar -->
+    
+
+
+   
