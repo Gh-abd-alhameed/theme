@@ -53,7 +53,7 @@ function maxart_register_post_type()
         'hierarchical' => false,
         'supports' => array('title', 'editor'),
         'menu_icon' => 'dashicons-format-status',
-        'show_in_rest' => false
+        'show_in_rest' => true
     );
     register_post_type('contact-us', $args);
 }
