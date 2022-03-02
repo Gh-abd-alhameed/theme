@@ -8,50 +8,10 @@ class maxart_custom_widget extends WP_Widget
     public function __construct()
     {
         $widget_ops = array(
-            'classname' => '',
-            'discription' => ''
+            'classname' => 'maxart',
+            'discription' => 'this is demo'
         );
         parent::__construct('Get-In-Touch', 'Get In Touch', $widget_ops);
-    }
-
-
-    // Back-end display of widget
-    public function Form($instanse)
-    {
-        $title = (!empty($instance['title'])) ? $instance['title'] : 'Get In Touch';
-        $address =  (!empty($instanse['address'])) ? $instanse['address'] : 'address';
-        $phone =  (!empty($instanse['phone'])) ? $instanse['phone'] : get_option('maxart_register_phone_number');
-        $phone2 =  (!empty($instanse['phone2'])) ? $instanse['phone2'] : 'Phone 2 ';
-        $email =  (!empty($instanse['email'])) ? $instanse['email'] : get_bloginfo('admin_email');
-        $city =  (!empty($instanse['city'])) ? $instanse['city'] : 'city';
-        $street =  (!empty($instanse['street'])) ? $instanse['street'] : 'street';
-?>
-        <form method="post">
-            <label for="<?php echo $this->get_field_id('title'); ?>">Address</label>
-            <input type="text" class="components-placeholder__input" name="<?php echo $this->get_field_name('title'); ?>" id="' .<?php echo $this->get_field_id('address'); ?>" value="<?php echo $title ?>">
-
-            <label for="<?php echo  $this->get_field_id('address'); ?>">Address</label>
-            <input type="text" class="components-placeholder__input" name="<?php echo $this->get_field_name('address'); ?>" id="' .<?php echo $this->get_field_id('address'); ?>" value="<?php echo $address ?>">
-
-            <label for="<?php echo $this->get_field_id('phone'); ?>">Address</label>
-            <input type="text" class="components-placeholder__input" name="<?php echo $this->get_field_name('phone'); ?>" id="' .<?php echo $this->get_field_id('phone'); ?>" value="<?php echo $phone ?>">
-
-            <label for="<?php echo $this->get_field_id('phone2'); ?>">Address</label>
-            <input type="text" class="components-placeholder__input" name="<?php echo $this->get_field_name('phone2'); ?>" id="' .<?php echo $this->get_field_id('phone2'); ?>" value="<?php echo $phone2 ?>">
-
-            <label for="<?php echo $this->get_field_id('email'); ?>">Address</label>
-            <input type="text" class="components-placeholder__input" name="<?php echo $this->get_field_name('email'); ?>" id="' .<?php echo $this->get_field_id('email'); ?>" value="<?php echo $email ?>">
-
-            <label for="<?php echo $this->get_field_id('city'); ?>">Address</label>
-            <input type="text" class="components-placeholder__input" name="<?php echo $this->get_field_name('city'); ?>" id="' .<?php echo $this->get_field_id('city'); ?>" value="<?php echo $city ?>">
-
-            <label for="<?php echo $this->get_field_id('street'); ?>">Address</label>
-            <input type="text" class="components-placeholder__input" name="<?php echo $this->get_field_name('street'); ?>" id="' .<?php echo $this->get_field_id('street'); ?>" value="<?php echo $street ?>">
-
-
-        </form>
-        <button type="button" class="components-button  is-primary">send</button>
-<?php
     }
     //output Back-end function
     public function update($new_instance, $old_instance)
@@ -59,9 +19,9 @@ class maxart_custom_widget extends WP_Widget
         $instance = array();
         $instance['title'] = (!empty($new_instance['title'])  ? strip_tags($new_instance['title']) : '');
         $instance['address'] = (!empty($new_instance['address'])  ? strip_tags($new_instance['address']) : '');
-        $instance['phone'] = (!empty($new_instance['phone'])  ? strip_tags($new_instance['phone']) : get_option('maxart_register_phone_number'));
-        $instance['phone2'] = (!empty($new_instance['phone2'])  ? strip_tags($new_instance['phone2']) : '');
-        $instance['email'] = (!empty($new_instance['email'])  ? strip_tags($new_instance['email']) : get_bloginfo('admin_email'));
+        $instance['phone'] = (!empty($new_instance['phone'])  ? absint(strip_tags($new_instance['phone'])) : 0);
+        $instance['phone2'] = (!empty($new_instance['phone2'])  ?absint( strip_tags($new_instance['phone2']) ): 0);
+        $instance['email'] = (!empty($new_instance['email'])  ? strip_tags($new_instance['email']) : '');
         $instance['city'] = (!empty($new_instance['city']) ? strip_tags($new_instance['city']) : '');
         $instance['street'] = (!empty($new_instance['street'])  ? strip_tags($new_instance['street']) : '');
         return $instance;
@@ -70,21 +30,59 @@ class maxart_custom_widget extends WP_Widget
     public function widget($args, $instance)
     {
         $title = !empty($instance['title']) ? $instance['title'] : '';
-        $address =  (!empty($instanse['address'])) ? $instanse['address'] : 'address';
-        $phone =  (!empty($instanse['phone'])) ? $instanse['phone'] : get_option('maxart_register_phone_number');
-        $phone2 =  (!empty($instanse['phone2'])) ? $instanse['phone2'] : 'Phone 2 ';
-        $email =  (!empty($instanse['email'])) ? $instanse['email'] : get_bloginfo('admin_email');
-        $city =  (!empty($instanse['city'])) ? $instanse['city'] : 'city';
-        $street =  (!empty($instanse['street'])) ? $instanse['street'] : 'street';
+        $address =  (!empty($instance['address'])) ? $instance['address'] : 'address';
+        $phone =  (!empty($instance['phone'])) ? absint($instance['phone']) : get_option('maxart_register_phone_number');
+        $phone2 =  (!empty($instance['phone2'])) ? absint($instance['phone2']) : 0;
+        $email =  (!empty($instance['email'])) ? $instance['email'] : get_bloginfo('admin_email');
+        $city =  (!empty($instance['city'])) ? $instance['city'] : 'city';
+        $street =  (!empty($instance['street'])) ? $instance['street'] : 'street';
         echo $args['before_title'] . esc_html($title)  . $args['after_title'];
         echo $args['before_widget'];
-        echo '<li class="nav-item mb-2 nav-link p-0 text-muted"><i class="fa-solid fa-location-dot" style="padding:0px 5px;"></i>' . $address . '</li>';
-        echo '<li class="nav-item mb-2 nav-link p-0 text-muted"><i class="fa-solid fa-phone-flip" style="padding:0px 5px;"></i>' . $phone . '</li>';
-        echo '<li class="nav-item mb-2 nav-link p-0 text-muted"><i class="fa-brands fa-whatsapp" style="padding:0px 5px;"></i>' . $phone2 . '</li>';
-        echo '<li class="nav-item mb-2 nav-link p-0 text-muted"><i class="fa-solid fa-envelope-open " style="padding:0px 5px;"></i>' . $email . '</li>';
-        echo '<li class="nav-item mb-2 nav-link p-0 text-muted"><i class="fa-solid fa-location-dot" style="padding:0px 5px;"></i>' . $city . '</li>';
-        echo '<li class="nav-item mb-2 nav-link p-0 text-muted"><i class="fa-solid fa-location-dot" style="padding:0px 5px;"></i>' . $street . '</li>';
+        echo '<li class="nav-item mb-2 nav-link p-0 text-muted"><i class="fa-solid fa-location-dot" style="padding:0px 5px;"></i>' . $address  . '</li>';
+        echo '<li class="nav-item mb-2 nav-link p-0 text-muted"><i class="fa-solid fa-phone-flip" style="padding:0px 5px;"></i>' . esc_html($phone) . '</li>';
+        echo '<li class="nav-item mb-2 nav-link p-0 text-muted"><i class="fa-brands fa-whatsapp" style="padding:0px 5px;"></i>' . esc_html($phone2) . '</li>';
+        echo '<li class="nav-item mb-2 nav-link p-0 text-muted"><i class="fa-solid fa-envelope-open " style="padding:0px 5px;"></i>' . esc_html($email) . '</li>';
+        echo '<li class="nav-item mb-2 nav-link p-0 text-muted"><i class="fa-solid fa-location-dot" style="padding:0px 5px;"></i>' . esc_html($city) . '</li>';
+        echo '<li class="nav-item mb-2 nav-link p-0 text-muted"><i class="fa-solid fa-location-dot" style="padding:0px 5px;"></i>' . esc_html($street) . '</li>';
         echo $args['after_widget'];
+    }
+    // Back-end display of widget
+    public function Form($instance)
+    {
+        $title = (!empty($instance['title'])) ? $instance['title'] : 'Get In Touch';
+        $address =  (!empty($instance['address'])) ? $instance['address'] : 'address';
+        $phone =  (!empty($instance['phone'])) ? $instance['phone'] : get_option('maxart_register_phone_number');
+        $phone2 =  (!empty($instance['phone2'])) ? $instance['phone2'] : 'Phone 2 ';
+        $email =  (!empty($instance['email'])) ? $instance['email'] : get_bloginfo('admin_email');
+        $city =  (!empty($instance['city'])) ? $instance['city'] : 'city';
+        $street =  (!empty($instance['street'])) ? $instance['street'] : 'street';
+?>
+        <div>
+            <label for="<?php echo esc_attr($this->get_field_id('title')); ?>">Title</label>
+            <input type="text" class="widefat" name="<?php echo esc_attr($this->get_field_name('title')); ?>" id="' .<?php echo esc_attr($this->get_field_id('address')); ?>" value="<?php echo esc_attr($title) ?>">
+
+            <label for="<?php echo  esc_attr($this->get_field_id('address')); ?>">Address</label>
+            <input type="text" class="widefat" name="<?php echo esc_attr($this->get_field_name('address')); ?>" id="<?php echo esc_attr($this->get_field_id('address')); ?>" value="<?php echo esc_attr($address) ?>">
+
+            <label for="<?php echo esc_attr($this->get_field_id('phone')); ?>">Phone</label>
+            <input type="text" class="widefat" name="<?php echo esc_attr($this->get_field_name('phone')); ?>" id="<?php echo esc_attr($this->get_field_id('phone')); ?>" value="<?php echo esc_attr($phone) ?>">
+
+            <label for="<?php echo esc_attr($this->get_field_id('phone2')); ?>">whatsapp</label>
+            <input type="text" class="widefat" name="<?php echo esc_attr($this->get_field_name('phone2')); ?>" id="<?php echo esc_attr($this->get_field_id('phone2')); ?>" value="<?php echo esc_attr($phone2) ?>">
+
+            <label for="<?php echo esc_attr($this->get_field_id('email')); ?>">Email</label>
+            <input type="text" class="widefat" name="<?php echo esc_attr($this->get_field_name('email')); ?>" id="<?php echo esc_attr($this->get_field_id('email')); ?>" value="<?php echo esc_attr($email) ?>">
+
+            <label for="<?php echo esc_attr($this->get_field_id('city')); ?>">City</label>
+            <input type="text" class="widefat" name="<?php echo esc_attr($this->get_field_name('city')); ?>" id="<?php echo esc_attr($this->get_field_id('city')); ?>" value="<?php echo esc_attr($city) ?>">
+
+            <label for="<?php echo esc_attr($this->get_field_id('street')); ?>">Street</label>
+            <input type="text" class="widefat" name="<?php echo esc_attr($this->get_field_name('street')); ?>" id="<?php echo esc_attr($this->get_field_id('street')); ?>" value="<?php echo esc_attr($street) ?>">
+            
+
+        </div>
+
+<?php
     }
 }
 
