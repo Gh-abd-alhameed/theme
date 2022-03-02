@@ -25,24 +25,33 @@ class maxart_custom_widget extends WP_Widget
         $email =  (!empty($instanse['email'])) ? $instanse['email'] : get_bloginfo('admin_email');
         $city =  (!empty($instanse['city'])) ? $instanse['city'] : 'city';
         $street =  (!empty($instanse['street'])) ? $instanse['street'] : 'street';
-        $output = '';
-        $output .= '<form method="post">';
-        $output .= '<label for="' . $this->get_field_id('address') . '">Address: </label>';
-        $output .= '<input type="text" class="components-placeholder__input" name="' . $this->get_field_name('address') . '" id="' . $this->get_field_id('address') . '" value="' . $address . '">';
-        $output .= '<label for="' . $this->get_field_id('phone') . '">Phone: </label>';
-        $output .= '<input type="text" class="components-placeholder__input" name="' . $this->get_field_name('phone') . '" id="' . $this->get_field_id('phone') . '" value="' . $phone . '">';
-        $output .= '<label for="' . $this->get_field_id('phone2') . '">Phone2: </label>';
-        $output .= '<input type="text" class="components-placeholder__input" name="' . $this->get_field_name('phone2') . '" id="' . $this->get_field_id('phone2') . '" value="' . $phone2 . '">';
-        $output .= '<label for="' . $this->get_field_id('email') . '">Email: </label>';
-        $output .= '<input type="text" class="components-placeholder__input" name="' . $this->get_field_name('email') . '" id="' . $this->get_field_id('email') . '" value="' . $email . '">';
-        $output .= '<label for="' . $this->get_field_id('city') . '">City: </label>';
-        $output .= '<input type="text" class="components-placeholder__input" name="' . $this->get_field_name('city') . '" id="' . $this->get_field_id('city') . '" value="' . $city . '">';
-        $output .= '<label for="' . $this->get_field_id('street') . '">Street: </label>';
-        $output .= '<input type="text" class="components-placeholder__input" name="' . $this->get_field_name('street') . '" id="' . $this->get_field_id('street') . '" value="' . $street . '">';
-        $output .= '<button type="submit" class="components-button  is-primary" >send</button>';
-        $output .= '</form>';
+?>
+        <form method="post">
+            <label for="<?php echo $this->get_field_id('title'); ?>">Address</label>
+            <input type="text" class="components-placeholder__input" name="<?php echo $this->get_field_name('title'); ?>" id="' .<?php echo $this->get_field_id('address'); ?>" value="<?php echo $title ?>">
 
-        echo $output;
+            <label for="<?php echo  $this->get_field_id('address'); ?>">Address</label>
+            <input type="text" class="components-placeholder__input" name="<?php echo $this->get_field_name('address'); ?>" id="' .<?php echo $this->get_field_id('address'); ?>" value="<?php echo $address ?>">
+
+            <label for="<?php echo $this->get_field_id('phone'); ?>">Address</label>
+            <input type="text" class="components-placeholder__input" name="<?php echo $this->get_field_name('phone'); ?>" id="' .<?php echo $this->get_field_id('phone'); ?>" value="<?php echo $phone ?>">
+
+            <label for="<?php echo $this->get_field_id('phone2'); ?>">Address</label>
+            <input type="text" class="components-placeholder__input" name="<?php echo $this->get_field_name('phone2'); ?>" id="' .<?php echo $this->get_field_id('phone2'); ?>" value="<?php echo $phone2 ?>">
+
+            <label for="<?php echo $this->get_field_id('email'); ?>">Address</label>
+            <input type="text" class="components-placeholder__input" name="<?php echo $this->get_field_name('email'); ?>" id="' .<?php echo $this->get_field_id('email'); ?>" value="<?php echo $email ?>">
+
+            <label for="<?php echo $this->get_field_id('city'); ?>">Address</label>
+            <input type="text" class="components-placeholder__input" name="<?php echo $this->get_field_name('city'); ?>" id="' .<?php echo $this->get_field_id('city'); ?>" value="<?php echo $city ?>">
+
+            <label for="<?php echo $this->get_field_id('street'); ?>">Address</label>
+            <input type="text" class="components-placeholder__input" name="<?php echo $this->get_field_name('street'); ?>" id="' .<?php echo $this->get_field_id('street'); ?>" value="<?php echo $street ?>">
+
+
+        </form>
+        <button type="button" class="components-button  is-primary">send</button>
+<?php
     }
     //output Back-end function
     public function update($new_instance, $old_instance)
@@ -82,3 +91,4 @@ class maxart_custom_widget extends WP_Widget
 add_action('widgets_init', function () {
     register_widget('maxart_custom_widget');
 });
+?>
