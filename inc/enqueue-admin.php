@@ -32,6 +32,7 @@ function maxart_enqueue_style()
     wp_enqueue_style('font-awesome-css', get_template_directory_uri() . '/assets/font-awesome/css/all.min.css', array(),'6.0.0');
     wp_enqueue_style('swiper-css', get_template_directory_uri() . '/assets/css/swiper-css/swiper-bundle.min.css', array(), '1.0.0');
     wp_enqueue_style('swiper-main-css', get_template_directory_uri() . '/assets/css/swiper-css/swiper.css', array(), '1.0.0');
+    wp_enqueue_style('contact-us-css', get_template_directory_uri() . '/assets/js/form-contact/contact_us.css', array(), '1.0.0');
     wp_enqueue_style('main-css', get_template_directory_uri() . '/assets/css/main.css', array(), '1.0.0');
     wp_enqueue_style('nav-css', get_template_directory_uri() . '/assets/css/nav.css', array(), '1.0.0');
 }
