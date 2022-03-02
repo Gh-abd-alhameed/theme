@@ -53,7 +53,7 @@ class maxart_custom_widget extends WP_Widget
         $instance['phone'] = (!empty($new_instance['phone'])  ? strip_tags($new_instance['phone']) : get_option('maxart_register_phone_number'));
         $instance['phone2'] = (!empty($new_instance['phone2'])  ? strip_tags($new_instance['phone2']) : '');
         $instance['email'] = (!empty($new_instance['email'])  ? strip_tags($new_instance['email']) : get_bloginfo('admin_email'));
-        $instance['city'] = (!empty($new_instance['city']) ? strip_tags($new_instance['city']) : '')gi;
+        $instance['city'] = (!empty($new_instance['city']) ? strip_tags($new_instance['city']) : '');
         $instance['street'] = (!empty($new_instance['street'])  ? strip_tags($new_instance['street']) : '');
         return $instance;
     }
