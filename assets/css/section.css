@@ -22,6 +22,67 @@
     color:var(--main-color);
 }
 
+/* Best Modified Cars */
+.best-modified-cars .container .row .col-lg-3 .card{
+    transition: transform 1s 0s ease ;
+    border-radius: 7px
+
+}
+.best-modified-cars .container .row .col-lg-3 .card:hover{
+transform: scale(1.02,1.02);
+/* box-shadow: 0px 0px 5px 1px white; */
+
+}
+.best-modified-cars .container .row .col-lg-3 .card .card-body .d-flex .box-price> p {
+margin: 0;
+}
+
+
+  /* about */
+  .about{
+    background-color: #0d0d19;
+  }
+  .about .container .row .col-lg-6  .arrow-before{
+    position: relative;
+    width: 100%;
+    height: 50%;
+    background-color: var(--main-color);
+  }
+  .about .container .row .col-lg-6  .arrow-before::before{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -11px;
+    transform: translate(-50%,0);
+    border: 16px solid var(--main-color);
+    border-bottom-color: transparent ;
+    border-left-color: transparent;
+    border-top-color: transparent;
+}
+  .about .container .row .col-lg-6  .arrow-after{
+    position: relative;
+    width: 100%;
+    height: 50%;
+    background-color: var(--main-color);
+  }
+  .about .container .row .col-lg-6  .arrow-after::after{
+    content: "";
+    position: absolute;
+    top: 50%;
+    right:-44px;
+    transform: translate(-50%,0);
+    border: 16px solid white ;
+    border-bottom-color: transparent ;
+    border-right-color: transparent;
+    border-top-color: transparent;
+}
+.about .container .row .col-lg-6  .scale  {
+      transition: transform 0.5s 0s linear;
+}
+.about .container .row .col-lg-6 .scale:hover {
+    transform: scale(1.05 ,1.05);
+}
+
 
 
 

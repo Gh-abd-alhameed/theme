@@ -1,5 +1,6 @@
 :root {
   --main-color: #8016a5;
+  
 }
 .appbar .container {
   padding-top: 5px;
@@ -11,17 +12,13 @@
 }
 .appbar .container span {
   color: var(--main-color);
-  font-weight: bold;
+  font-weight: 700;
 }
-.appbar .container .row .social-net {
-  display: flex;
-  justify-content: end;
-}
-.appbar .container .row .col-6 a {
+.appbar .container .row .col-2 a {
   color: black;
   padding: 0 5px;
 }
-.appbar .container .row .col-6 a:hover {
+.appbar .container .row .col-2 a:hover {
   color: var(--main-color);
 }
 /* < 576px	sm
@@ -44,6 +41,7 @@
 .main-menu {
   position: sticky;
   top: 0px;
+  z-index: 1300;
 }
 .main-menu nav {
   padding-top: 0;

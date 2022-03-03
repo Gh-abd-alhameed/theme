@@ -1,9 +1,9 @@
-<div class="container">
-    <footer class="py-5">
-        <div class="row">
+<footer class="">
+    <div class="container my-5 ">
 
-            <?php get_sidebar('Our Services') ?>
+        <div class="row d-flex justify-content-center">
             <?php get_sidebar('About') ?>
+            <?php get_sidebar('Our Services') ?>
             <?php get_sidebar('Get In Touch') ?>
             <?php get_sidebar('Location') ?>
             <div class="d-flex justify-content-between py-4 my-4 border-top">
@@ -18,25 +18,12 @@
                             </svg></a></li>
                 </ul>
             </div>
-    </footer>
-</div>
-<!-- 
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-3">
 
-            </div>
         </div>
-    </div>
-</footer> -->
-
-
+</footer>
 <?php wp_footer();   ?>
 
 
 </body>
 
 </html>
-
-

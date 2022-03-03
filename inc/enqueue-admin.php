@@ -35,6 +35,7 @@ function maxart_enqueue_style()
     wp_enqueue_style('contact-us-css', get_template_directory_uri() . '/assets/js/form-contact/contact_us.css', array(), '1.0.0');
     wp_enqueue_style('main-css', get_template_directory_uri() . '/assets/css/main.css', array(), '1.0.0');
     wp_enqueue_style('nav-css', get_template_directory_uri() . '/assets/css/nav.css', array(), '1.0.0');
+    wp_enqueue_style('footer-css', get_template_directory_uri() . '/assets/footer/footer.css', array(), '1.0.0');
 }
 add_action('wp_enqueue_scripts', 'maxart_enqueue_style');
 function maxart_enqueue_script()
@@ -42,6 +43,7 @@ function maxart_enqueue_script()
     wp_enqueue_script('font-awesome-js', get_template_directory_uri() . '/assets/font-awesome/js/all.min.js', array(), '6.0.0');
     wp_enqueue_script('bootstrap-js', get_template_directory_uri() . '/assets/js/bootstrap/bootstrap.min.js', array(), '1.0.0', true);
     wp_enqueue_script('swiper-js', get_template_directory_uri() . '/assets/js/swiper-js/swiper-bundle.min.js', array(), '1.0.0', true);
+    wp_enqueue_script('custom-swiper-js', get_template_directory_uri() . '/assets/js/swiper-js/swiper.js', array(), '1.0.0', true);
     wp_enqueue_script('main-js', get_template_directory_uri() . '/assets/js/main.js', array(), '1.0.0', true);
     wp_enqueue_script('contact-us-js', get_template_directory_uri() . '/assets/js/form-contact/contact_us.js', array(), '1.0.0', true);
 }

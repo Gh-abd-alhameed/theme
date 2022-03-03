@@ -2,16 +2,16 @@
 
 
 
-class maxart_custom_widget extends WP_Widget
+class maxart_info_contact_widget extends WP_Widget
 {
 
     public function __construct()
     {
-        $widget_ops = array(
+        $widget_info = array(
             'classname' => 'maxart',
             'discription' => 'this is demo'
         );
-        parent::__construct('Get-In-Touch', 'Get In Touch', $widget_ops);
+        parent::__construct('Get-In-Touch', 'Get In Touch', $widget_info);
     }
     //output Back-end function
     public function update($new_instance, $old_instance)
@@ -19,8 +19,8 @@ class maxart_custom_widget extends WP_Widget
         $instance = array();
         $instance['title'] = (!empty($new_instance['title'])  ? strip_tags($new_instance['title']) : '');
         $instance['address'] = (!empty($new_instance['address'])  ? strip_tags($new_instance['address']) : '');
-        $instance['phone'] = (!empty($new_instance['phone'])  ? absint(strip_tags($new_instance['phone'])) : 0);
-        $instance['phone2'] = (!empty($new_instance['phone2'])  ?absint( strip_tags($new_instance['phone2']) ): 0);
+        $instance['phone'] = (!empty($new_instance['phone'])  ? strip_tags($new_instance['phone'])  : 0);
+        $instance['phone2'] = (!empty($new_instance['phone2'])  ? strip_tags($new_instance['phone2']) : 0);
         $instance['email'] = (!empty($new_instance['email'])  ? strip_tags($new_instance['email']) : '');
         $instance['city'] = (!empty($new_instance['city']) ? strip_tags($new_instance['city']) : '');
         $instance['street'] = (!empty($new_instance['street'])  ? strip_tags($new_instance['street']) : '');
@@ -30,20 +30,24 @@ class maxart_custom_widget extends WP_Widget
     public function widget($args, $instance)
     {
         $title = !empty($instance['title']) ? $instance['title'] : '';
-        $address =  (!empty($instance['address'])) ? $instance['address'] : 'address';
-        $phone =  (!empty($instance['phone'])) ? absint($instance['phone']) : get_option('maxart_register_phone_number');
-        $phone2 =  (!empty($instance['phone2'])) ? absint($instance['phone2']) : 0;
+        $address =  (!empty($instance['address'])) ? $instance['address'] : '';
+        $phone =  (!empty($instance['phone'])) ? strip_tags($instance['phone']) : get_option('maxart_register_phone_number');
+        $phone2 =  (!empty($instance['phone2'])) ? strip_tags($instance['phone2']) : 0;
         $email =  (!empty($instance['email'])) ? $instance['email'] : get_bloginfo('admin_email');
-        $city =  (!empty($instance['city'])) ? $instance['city'] : 'city';
-        $street =  (!empty($instance['street'])) ? $instance['street'] : 'street';
+        $city =  (!empty($instance['city'])) ? $instance['city'] : '';
+        $street =  (!empty($instance['street'])) ? $instance['street'] : '';
         echo $args['before_title'] . esc_html($title)  . $args['after_title'];
         echo $args['before_widget'];
         echo '<li class="nav-item mb-2 nav-link p-0 text-muted"><i class="fa-solid fa-location-dot" style="padding:0px 5px;"></i>' . $address  . '</li>';
-        echo '<li class="nav-item mb-2 nav-link p-0 text-muted"><i class="fa-solid fa-phone-flip" style="padding:0px 5px;"></i>' . esc_html($phone) . '</li>';
+        echo '<li class="nav-item mb-2 nav-link p-0 text-muted"><i class="fa-solid fa-phone-flip" style="padding:0px 5px;"></i>' .esc_html($phone)  . '</li>';
         echo '<li class="nav-item mb-2 nav-link p-0 text-muted"><i class="fa-brands fa-whatsapp" style="padding:0px 5px;"></i>' . esc_html($phone2) . '</li>';
         echo '<li class="nav-item mb-2 nav-link p-0 text-muted"><i class="fa-solid fa-envelope-open " style="padding:0px 5px;"></i>' . esc_html($email) . '</li>';
+        if(!empty($city)):
         echo '<li class="nav-item mb-2 nav-link p-0 text-muted"><i class="fa-solid fa-location-dot" style="padding:0px 5px;"></i>' . esc_html($city) . '</li>';
+        endif;
+        if(!empty($street)):
         echo '<li class="nav-item mb-2 nav-link p-0 text-muted"><i class="fa-solid fa-location-dot" style="padding:0px 5px;"></i>' . esc_html($street) . '</li>';
+        endif;
         echo $args['after_widget'];
     }
     // Back-end display of widget
@@ -87,6 +91,7 @@ class maxart_custom_widget extends WP_Widget
 }
 
 add_action('widgets_init', function () {
-    register_widget('maxart_custom_widget');
+    register_widget('maxart_info_contact_widget');
 });
+
 ?>

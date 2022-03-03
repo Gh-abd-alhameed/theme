@@ -220,28 +220,30 @@ function maxart_multiple_widget_init()
         '</ul>',
         '<li class="nav-item mb-2">',
         '</li>',
-        '<div class="col-md-6 col-lg-3"style="margin-bottom:15px;">',
-        '</div>'
+        '<div class="col-md-6 col-lg-3"style="margin-bottom:15px;width: fit-content;margin-left: 20px!important;
+        margin-right: 20px !important;">',
+        '</div>',
     );
     maxart_widget_registration(
         'About',
         'siderbarAbout',
         '',
-        '<h5>About</h5><ul class="nav flex-column">',
+        '<h5>About</h5><ul class="nav flex-column"> ',
         '</ul>',
-        '<li class="nav-item mb-2">',
-        '</li>',
+        '<li class="nav-item mb-2"><h5>',
+        '</h5></li>',
         '<div class="col-md-6 col-lg-3"style="margin-bottom:15px;">',
         '</div>'
     );
+    
     maxart_widget_registration(
         'Get In Touch',
         'siderbarGetInTouch',
         '',
         '<ul class="nav flex-column">',
         '</ul>',
-        '',
-        '',
+        '<h5>',
+        '</h5>',
         '<div class="col-md-6 col-lg-3"style="margin-bottom:15px;">',
         '</div>'
     );
@@ -249,7 +251,7 @@ function maxart_multiple_widget_init()
         'Location',
         'siderbarLocation',
         '',
-        '<h5>Get In Touch</h5><ul class="nav flex-column">',
+        '<h5>Location</h5><ul class="nav flex-column">',
         '</ul>',
         '<li class="nav-item mb-2">',
         '</li>',
@@ -259,3 +261,28 @@ function maxart_multiple_widget_init()
 }
 
 add_action('widgets_init', 'maxart_multiple_widget_init');
+
+
+// add theme support WooCommerce 
+function maxart_add_woocommerce_support()
+{
+    add_theme_support('woocommerce', array(
+        'thumbnail_image_width' => 150,
+        'single_image_width'    => 400,
+
+        'product_grid'        => array(
+            'default_rows'    => 3,
+            'min_rows'        => 2,
+            'max_rows'        => 6,
+            'default_columns' => 4,
+            'min_columns'     => 2,
+            'max_columns'     => 3,
+        ),
+    ));
+    add_theme_support('wc-product-gallery-zoom');
+    add_theme_support('wc-product-gallery-lightbox');
+    add_theme_support('wc-product-gallery-slider');
+}
+
+add_action('after_setup_theme', 'maxart_add_woocommerce_support');
+// add_filter( 'woocommerce_enqueue_styles', '__return_false' );

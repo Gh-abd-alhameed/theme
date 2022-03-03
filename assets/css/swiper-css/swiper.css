@@ -2,6 +2,9 @@
     width: 100%;
     height: 100%;
   }
+.swiper-wrapper {
+   height: 250px;
+  }
 
 .swiper-slide {
     text-align: center;

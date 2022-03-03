@@ -2,11 +2,13 @@
 
 require_once get_template_directory() . '/inc/function-admin.php';
 require_once get_template_directory() . '/inc/enqueue-admin.php';
-require_once get_template_directory() . '/inc/shortcode.php';
 require_once get_template_directory() . '/inc/walker-menu.php';
+require_once get_template_directory() . '/inc/shortcode.php';
+require_once get_template_directory() . '/inc/function-wc.php';
 require_once get_template_directory() . '/inc/theme-support.php';
 require_once get_template_directory() . '/inc/widget.php';
 require_once get_template_directory() . '/inc/api.php';
+require_once get_template_directory() . '/inc/short-functions.php';
 
 
 // remove ver wordpress 

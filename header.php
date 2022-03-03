@@ -31,12 +31,15 @@
     <section class="appbar">
         <div class='container'>
             <div class="row">
-                <div class="col-6">
+                <div class="col-10">
                     <?php $site_phone = get_option('maxart_register_phone_number');  ?>
                     <span> Phone: </span>
-                    <a>+<?php echo esc_html($site_phone); ?></a>
+                    <a><?php echo $site_phone; ?></a>
+                    <?php $site_watsapp = get_option('maxart_register_whatsapp');  ?>
+                    <span class="ms-2"> WhatsApp: </span>
+                    <a><?php echo $site_watsapp; ?></a>
                 </div>
-                <div class="col-6 me-auto social-net">
+                <div class="col-2 ms-auto social-net">
                     <?php
                     $facebook = get_option('maxart_register_facebook');
                     $twitter = get_option('maxart_register_twitter');

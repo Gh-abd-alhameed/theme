@@ -1,7 +1,7 @@
 <?php
 
 /*
-    @package maxart
+    @package Maxart
 */
 
 // Adding application pages in the control panel
@@ -58,11 +58,12 @@ function maxart_custom_options()
     register_setting('maxart-settings-option', 'maxart_register_namesite', 'maxart_settings_option_namesite_verification');
     // PhoneNumber Register
     register_setting('maxart-settings-option', 'maxart_register_phone_number', 'maxart_settings_option_phone_number_verification');
+    register_setting('maxart-settings-option', 'maxart_register_whatsapp', 'maxart_settings_option_whatsapp_verification');
     // Facebook Register
     register_setting('maxart-settings-option', 'maxart_register_facebook', 'maxart_settings_option_facebook_verification');
     // Twitter Register
     register_setting('maxart-settings-option', 'maxart_register_twitter', 'maxart_settings_option_twitter_verification');
-    // Logo Field
+
     // logo Site Field
     add_settings_field(
         'maxart-field-Logo',
@@ -84,6 +85,14 @@ function maxart_custom_options()
         'maxart-field-phone-number',
         'Phone Nmber',
         'maxart_field_phone_number',
+        'maxart_settings',
+        'maxart-general-options'
+    );
+    // whatsApp Field
+    add_settings_field(
+        'maxart-field-whatsapp',
+        'Whatsapp',
+        'maxart_field_whatsapp',
         'maxart_settings',
         'maxart-general-options'
     );
@@ -188,9 +197,19 @@ function maxart_settings_option_phone_number_verification($input)
 {
     $CHECK = array(
         '@', '/', '\\', '"', '\'', '|', '$', '.', ',', '(', ')', '!', '#', '%', '^', '&', ':',
-        '*', '_', '+', '=', ';', 'HTTPS', 'https', 'http', 'http', '{', '}', '[', ']', '<', '>'
+        '*', '_', '=', ';', 'HTTPS', 'https', 'http', 'http', '{', '}', '[', ']', '<', '>'
     );
-    $output = str_replace($CHECK, '', absint($input));
+    $output = str_replace($CHECK, '', strip_tags($input) );
+    return $output;
+}
+// Register whatsApp
+function maxart_settings_option_whatsapp_verification($input)
+{
+    $CHECK = array(
+        '@', '/', '\\', '"', '\'', '|', '$', '.', ',', '(', ')', '!', '#', '%', '^', '&', ':',
+        '*', '_', '=', ';', 'HTTPS', 'https', 'http', 'http', '{', '}', '[', ']', '<', '>'
+    );
+    $output = str_replace($CHECK, '', strip_tags($input) );
     return $output;
 }
 function maxart_settings_option_twitter_verification($input)
@@ -198,7 +217,7 @@ function maxart_settings_option_twitter_verification($input)
 
     $CHECK = array(
         '@', '/', '\\', '"', '\'', '|', '$', '.', ',', '(', ')', '!', '#', '%', '^', '&', ':',
-        '*', '_', '+', '=', ';', 'HTTPS', 'https', 'http', 'http', '{', '}', '[', ']', '<', '>'
+        '*', '', '+', '=', ';', 'HTTPS', 'https', 'HTTP', 'http', '{', '}', '[', ']', '<', '>'
     );
     $input =  (!empty(@$input) ? str_replace($CHECK, '', trim(sanitize_text_field($input))) : '');
     return $input;
@@ -207,7 +226,7 @@ function maxart_settings_option_facebook_verification($input)
 {
     $CHECK = array(
         '@', '/', '\\', '"', '\'', '|', '$', '.', ',', '(', ')', '!', '#', '%', '^', '&', ':',
-        '*', '_', '+', '=', ';', 'HTTPS', 'https', 'http', 'http', '{', '}', '[', ']', '<', '>'
+        '*', '+', '=', ';', 'HTTPS', 'https', 'HTTP', 'http', '{', '}', '[', ']', '<', '>'
     );
     $input =  (!empty(@$input) ? str_replace($CHECK, '', trim(sanitize_text_field($input))) : '');
     return $input;
@@ -250,6 +269,12 @@ function maxart_field_phone_number()
 {
     $phone_number = get_option('maxart_register_phone_number');
     echo '<input type="text" id="maxart_register_phone_number" name="maxart_register_phone_number" value="' . esc_attr($phone_number) . '"/>';
+}
+// Output Field maxart-Field- phone Number
+function maxart_field_whatsapp()
+{
+    $whatsapp = get_option('maxart_register_whatsapp');
+    echo '<input type="text" id="maxart_register_whatsapp" name="maxart_register_whatsapp" value="' . esc_attr($whatsapp) . '"/>';
 }
 // Output field maxart-fidle-twitter
 function maxart_field_twitter()

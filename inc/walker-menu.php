@@ -88,7 +88,8 @@ class custom_menu extends Walker_Nav_menu
 		$classes   = empty($menu_item->classes) ? array() : (array) $menu_item->classes;
 		$classes[] = 'menu-item-' . $menu_item->ID;
 		$classes[] = 'nav-item';
-		$classes[] = ($args->walker->has_children)? 'dropdown' : '';
+		$classes[] = ($args->walker->has_children)
+			? 'dropdown' : '';
 		$classes[] = 'p-3';
 		$classes[] = ($menu_item->current || $menu_item->current_item_ancestor) ? "active" : '';
 
@@ -130,7 +131,7 @@ class custom_menu extends Walker_Nav_menu
 		 */
 		// 'menu-item-' . $menu_item->ID
 		
-		$arr_id_li = array('menu-item-' . $menu_item->ID);
+		$arr_id_li = array('menu-item-' . $menu_item->ID, "ghadeer", "pro");
 		$id_li = join(" ", $arr_id_li);
 		$id = apply_filters('nav_menu_item_id', $id_li, $menu_item, $args, $depth);
 		$id = $id ? ' id="' . esc_attr($id) . '"' : '';
@@ -148,7 +149,7 @@ class custom_menu extends Walker_Nav_menu
 		// class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"
 		// $atts['class'] = in_array("menu-item-has-children",$menu_item->classes)? 'nav-link dropdown-toggle'  : 'nav-link';
 		if ($args->walker->has_children) {
-			if($depth > 1 ){
+			if($depth > 0 ){
 				$atts['class'] = 'dropdown-item dropdown-togele';
 			}else{
 				if($menu_item->current || $menu_item->current_item_ancestor){
