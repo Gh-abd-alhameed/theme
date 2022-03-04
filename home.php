@@ -61,13 +61,18 @@ get_header();
         <h1 class=" fw-bold" style="color:#8016A5;">Best Modified Cars</h1>
         <p class="load pb-4 text-light">Which car speaks to you?</p>
         <div data-product="best-cars" class="row justify-content-center ">
-            
-            <?php if (have_posts()) :
-                while (have_posts()) : the_post();  ?>
-                    <?php get_template_part('templates/content', get_post_format()); ?>
-                    <!-- End Product -->
-                <?php endwhile;  ?>
+
             <?php
+            $args = array(
+                'post_type' => 'product',
+            );
+            $loop = new WP_Query($args);
+            if ($loop->have_posts()) :
+                while ($loop->have_posts()) : $loop->the_post(); 
+                   get_template_part('templates/content','product'); 
+                   
+                    
+            endwhile; 
             endif;
             wp_reset_postdata();
             ?>
@@ -103,14 +108,14 @@ get_header();
             all the traffic, parking, and steering issues. Enjoy every ride.</p>
         <div class="row ">
             <div class="col-lg-3 text-center  ">
-            
+
                 <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/icon7.webp'); ?>" style="width:65px;height:65;" alt="">
                 <p class="text-light  " style="font-size:20px">Unbeatable Prices</p>
                 <p class="load text-light" style="font-size:15px;">Satisfy yourself with unbeatable rental prices
                     around the UAE with reasonable prices and long-term deals.</p>
             </div>
             <div class="col-lg-3 text-center" style="border-left: 2px solid white;">
-            
+
                 <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/icon8.webp'); ?>" style="width:65px;height:65;" alt="">
                 <p class="text-light " style="font-size:20px">Your Choice of Professionalism</p>
                 <p class="load text-light" style="font-size:15px;">Add a touch of comfort to your experience with
@@ -118,7 +123,7 @@ get_header();
             </div>
 
             <div class="col-lg-3 text-center  " style=" border-left: 2px solid white;">
-            
+
                 <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/icon9.webp'); ?>" style="width:65px;height:65;" alt="">
                 <p class="text-light   " style="font-size:20px">Suits Every Budget</p>
                 <p class="load text-light" style="font-size:15px;">If you dream it, we have it for you. Rent your
@@ -126,7 +131,7 @@ get_header();
             </div>
 
             <div class="col-lg-3 text-center  " style=" border-left: 2px solid white;">
-            
+
                 <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/icon10.webp'); ?>" style="width:65px;height:65;" alt="">
                 <p class="text-light  " style="font-size:20px">24/7 Assistance</p>
                 <p class="load text-light" style="font-size:15px;">Hit our hotline for any kind of emergency. We are
@@ -144,7 +149,7 @@ get_header();
 
             <div class="col-lg-6 pe-3 ">
                 <div class="scale">
-                
+
                     <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/s1.webp') ?>" class="img-fluid" alt="">
                 </div>
 
@@ -190,7 +195,7 @@ get_header();
             </div>
             <div class="col-lg-6 ps-3 ">
                 <div class="scale">
-                
+
                     <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/luxury-in-a-limousine.webp'); ?>" class="img-fluid" alt="">
                 </div>
 
@@ -200,7 +205,7 @@ get_header();
             <!-- start three -->
             <div class="col-lg-6 pe-3 ">
                 <div class="scale">
-                
+
                     <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/plane.webp'); ?>" class="img-fluid" alt="">
                 </div>
 
@@ -242,7 +247,7 @@ get_header();
             </div>
             <div class="col-lg-6 ps-3 ">
                 <div class="scale">
-                
+
                     <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/monthly-deal.webp'); ?>" class="img-fluid" alt="">
                 </div>
 
