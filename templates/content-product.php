@@ -4,14 +4,16 @@
 */
 ?>
 <!-- product -->
+<?php
+global $product;
 
+?>
 <div class="col-lg-3 mb-4" style="width: 25rem;">
     <div class="card" style=" border:3px solid #8016A5;">
         <div class="swiper format-gallery card-img-top">
             <div class="swiper-wrapper">
                 <?php
-                
-                global $product;
+
                 $attachments = maxart_post_format_product();
                 if ($attachments) :
                     foreach ($attachments as $attachment) : ?>
