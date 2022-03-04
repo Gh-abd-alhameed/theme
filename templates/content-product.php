@@ -33,11 +33,10 @@ global $product;
                 <h5 class="card-title pb-4"><?php echo $product->get_name(); ?></h5>
             </a>
 
-            <div class="  d-flex flex-row justify-content-center align-items-center">
-                <h6 class="box-price load py-2 px-2 fw-bold" style="border:1px dashed #adb5bd"><?php echo $product->get_price(); ?></h6>
-                <img class="ms-auto" src="https://fastcarrental.ae/assets/img/whatsapp-icon.webp" style="width:30px ; height:30px;" alt="">
-                <a href="#" class="btn btn-primary mx-auto py-auto">Book Now</a>
-
+            <div class="  d-flex flex-row justify-content-center  align-items-center">
+                <h6 class="box-price load my-auto py-2 px-2 fw-bold " style="border:1px dashed #adb5bd"><?php echo $product->get_price().' '.get_woocommerce_currency_symbol(); ?></h6>
+                <i class="fa-brands fa-whatsapp my-auto ms-auto" style="width:30px;height:30px ;padding:0px 5px;"></i>
+                <a href="#" class="btn btn-primary ms-auto py-auto">Book Now</a>
             </div>
 
         </div>
