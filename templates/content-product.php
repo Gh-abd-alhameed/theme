@@ -10,7 +10,7 @@
         <div class="swiper format-gallery card-img-top">
             <div class="swiper-wrapper">
                 <?php
-                do_action('maxart_post_format_products');
+                
                 global $product;
                 $attachments = maxart_post_format_product();
                 if ($attachments) :
