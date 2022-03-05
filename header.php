@@ -58,7 +58,7 @@
                 $logo_url = content_url('uploads/') . get_option('maxart_register_logo');
                 $logo = (!empty(get_option('maxart_register_logo')) ? $logo_url : get_template_directory_uri() . '/assets/img/logo.jpg');
                 ?>
-                <div class="logo-site" style="background-image:url(<?php echo  esc_url($logo); ?>);"></div>
+                <a href="<?php echo esc_url(get_bloginfo('url')) ?>"><div class="logo-site" style="background-image:url(<?php echo  esc_url($logo); ?>);"></div></a>
 
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">

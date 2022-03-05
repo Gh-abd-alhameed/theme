@@ -267,8 +267,8 @@ add_action('widgets_init', 'maxart_multiple_widget_init');
 function maxart_add_woocommerce_support()
 {
     add_theme_support('woocommerce', array(
-        'thumbnail_image_width' => 150,
-        'single_image_width'    => 400,
+        'thumbnail_image_width' => 100,
+        'single_image_width'    => 300,
 
         'product_grid'        => array(
             'default_rows'    => 3,

@@ -1,7 +1,9 @@
 <?php
 /* 
-        @package maxart
-    */
+Template Name: HomePage 
+@package maxart
+
+*/
 get_header();
 ?>
 
@@ -60,45 +62,48 @@ get_header();
     <div class="container text-center pt-5">
         <h1 class=" fw-bold" style="color:#8016A5;">Best Modified Cars</h1>
         <p class="load pb-4 text-light">Which car speaks to you?</p>
-        <div data-product="best-cars" class="row justify-content-center ">
+        <div id="print_data" data-product="best-cars" class="row justify-content-start ">
 
             <?php
+            global $product;
             $args = array(
                 'post_type' => 'product',
+                'posts_per_page' => 6,
+                'paged' => 1,
+
             );
             $loop = new WP_Query($args);
             if ($loop->have_posts()) :
-                while ($loop->have_posts()) : $loop->the_post(); 
-                   get_template_part('templates/content','product'); 
-                   
-                    
-            endwhile; 
+                while ($loop->have_posts()) : $loop->the_post();
+                    get_template_part('templates/content', 'product');
+                endwhile;
             endif;
             wp_reset_postdata();
             ?>
         </div>
-        <?php
-        if (have_posts() > 6) {
-            if (get_previous_posts_link()) {
-                previous_posts_link('<button type="button" class="btn btn-light">pre</button>');
-            } else {
-                echo '<button type="button" class="btn btn-light" display>pre</button>';
-            }
-            if (get_next_posts_link()) {
-                next_posts_link('<button type="button" class="btn btn-light">next</button>');
-            } else {
-                echo '<button type="button" class="btn btn-light" display>next</button>';
-            }
-        }
+        <div class="row">
+            <div class="col-12">
+                
+                <a id="load_more" class="btn mx-auto" style="color: white;font-weight:bold;background-color:#8016A5; width:fit-content;" data-page="<?php echo 1 ; ?>" data-url="<?php echo esc_url(admin_url('admin-ajax.php')); ?>">
+                load more    
+                <!-- <img  src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/icon/arrows-rotate.svg');  ?>" style="width:40px; height:40px;""  alt=""> -->
+            </a>
 
-        ?>
+            </div>
+        </div>
 
 
     </div>
 </section>
 
 <!-- A unique Adventure -->
-
+<!-- 'tax_query' => array(
+                    array(
+                        'taxonomy' => 'product_cat',
+                        'field'    => 'slug',
+                        'terms'    => 'Tshirts',
+                    ),
+                ), -->
 
 <section class="unique-adventure" style="background-color: #0d0d19;">
     <div class="container text-center pt-5 pb-5">

@@ -33,23 +33,51 @@ function  maxart_contact_us()
         $email = wp_strip_all_tags($_POST['email']);
         $phone = wp_strip_all_tags($_POST['phone']);
         $message = wp_strip_all_tags($_POST['message']);
-        $phone = filter_var($phone ,FILTER_SANITIZE_NUMBER_INT);
-        $email = filter_var($email ,FILTER_SANITIZE_EMAIL);
+        $phone = filter_var($phone, FILTER_SANITIZE_NUMBER_INT);
+        $email = filter_var($email, FILTER_SANITIZE_EMAIL);
         $args = array(
             'post_title' => $name,
-            'post_content'=> $message ,
-            'post_type'=>'contact-us',
-            'post_status'=>'publish',
-            'post_author'=>1,
-            'meta_input'=>array(
+            'post_content' => $message,
+            'post_type' => 'contact-us',
+            'post_status' => 'publish',
+            'post_author' => 1,
+            'meta_input' => array(
                 '_contact-email' => $email,
                 '_contact-phone' => $phone,
             )
         );
         $postID = wp_insert_post($args);
-        echo $postID ;
-    }else{
+        echo $postID;
+    } else {
         echo "0";
+    }
+    wp_die();
+}
+// get product page
+add_action('wp_ajax_nopriv_maxart_product_homepage', 'maxart_product_homepage');
+add_action('wp_ajax_maxart_product_homepage', 'maxart_product_homepage');
+function maxart_product_homepage()
+{
+    if (isset($_POST['page']) && !empty($_POST['page'])) {
+        $page = $_POST['page']++;
+        
+        $args = array(
+            'post_type'=>'product',
+            'posts_per_page'=>3,
+            'paged'=> $page,
+        );
+        $products = new WP_Query($args);
+        if($products->have_posts()){
+            while($products->have_posts()){
+                $products->the_post(); 
+                echo get_template_part('./templates/content','product');
+            }
+        }else{
+            echo 'not product';
+        }
+        wp_reset_postdata();
+    } else {
+        echo 'not set and empty';
     }
     wp_die();
 }
