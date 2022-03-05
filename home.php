@@ -83,7 +83,6 @@ get_header();
         </div>
         <div class="row">
             <div class="col-12">
-                
                 <a id="load_more" class="btn mx-auto" style="color: white;font-weight:bold;background-color:#8016A5; width:fit-content;" data-page="<?php echo 1 ; ?>" data-url="<?php echo esc_url(admin_url('admin-ajax.php')); ?>">
                 load more    
                 <!-- <img  src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/icon/arrows-rotate.svg');  ?>" style="width:40px; height:40px;""  alt=""> -->

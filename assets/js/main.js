@@ -2,7 +2,7 @@ document.body.onclick = function (e) {
   if (e.target.id == "load_more") {
     let load_more = document.getElementById("load_more");
     let url = e.target.getAttribute("data-url");
-    let page = +e.target.getAttribute("data-page");
+    let page = e.target.getAttribute("data-page");
     
     let action = "maxart_product_homepage";
     let div_print = document.getElementById("print_data");
