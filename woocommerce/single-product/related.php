@@ -34,10 +34,10 @@ if ($related_products) : ?>
 		<?php endif; ?>
 
 
+		<div class="swiper Relatedproducts">
 
-		<?php woocommerce_product_loop_start(); ?>
-		<div class="swiper Relatedproducts" >
-			<div class="swiper-wrapper" >
+			<?php woocommerce_product_loop_start(); ?>
+			<div class="swiper-wrapper">
 
 				<?php foreach ($related_products as $related_product) : ?>
 					<div class="swiper-slide">
@@ -54,9 +54,9 @@ if ($related_products) : ?>
 			</div>
 			<div class="swiper-button-next"></div>
 			<div class="swiper-button-prev"></div>
-		</div>
-		<?php woocommerce_product_loop_end(); ?>
+			<?php woocommerce_product_loop_end(); ?>
 
+		</div>
 	</section>
 <?php
 endif;
