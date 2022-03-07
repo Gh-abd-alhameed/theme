@@ -65,6 +65,13 @@ function maxart_product_homepage()
             'post_type'=>'product',
             'posts_per_page'=>3,
             'paged'=> $page,
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'product_cat',
+                    'field'    => 'slug',
+                    'terms'    => 'Tshirts',
+                ),
+            ),
         );
         $products = new WP_Query($args);
         if($products->have_posts()){
@@ -73,7 +80,7 @@ function maxart_product_homepage()
                 echo get_template_part('./templates/content','product');
             }
         }else{
-            echo 'not product';
+            echo '<div class="col-12"><p class="load color-danger bg-light">not product</div>';
         }
         wp_reset_postdata();
     } else {

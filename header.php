@@ -67,13 +67,13 @@
                 <div class="collapse navbar-collapse " id="navbarNavDropdown">
                     <?php
                     wp_nav_menu(array(
-                        'menu' => 'Nav_menu',
+                        'menu' => 'Nav_menu mx-auto',
                         'menu_class' => 'navbar-nav me-auto ms-auto mb-2 mb-lg-0',
                         'container' => '',
                         'walker' => new custom_menu(),
                     )); ?>
                     <div class="vr bg-transparent "></div>
-
+                    <?php get_search_form(); ?>
                 </div> <!-- collapse -->
             </div><!-- container -->
         </nav><!-- navbar -->

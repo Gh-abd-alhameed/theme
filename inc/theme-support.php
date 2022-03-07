@@ -216,24 +216,23 @@ function maxart_multiple_widget_init()
         'Our Services',
         'siderbarFooter',
         '',
-        '<h5>Our Services</h5><ul class="nav flex-column">',
+        '<h5 class="text-center" style="color:white;">Our Services</h5><ul class="nav flex-column ">',
         '</ul>',
-        '<li class="nav-item mb-2">',
+        '<li class="nav-item mb-2" style="font-weight:600">',
         '</li>',
-        '<div class="col-md-6 col-lg-3"style="margin-bottom:15px;width: fit-content;margin-left: 20px!important;
-        margin-right: 20px !important;">',
-        '</div>',
+        '',
+        '',
     );
     maxart_widget_registration(
         'About',
         'siderbarAbout',
         '',
-        '<h5>About</h5><ul class="nav flex-column"> ',
+        '<h5  style="color:white;">About</h5><ul class="nav flex-column"> ',
         '</ul>',
-        '<li class="nav-item mb-2"><h5>',
+        '<li class="nav-item mb-2" style="font-weight:600"><h5>',
         '</h5></li>',
-        '<div class="col-md-6 col-lg-3"style="margin-bottom:15px;">',
-        '</div>'
+        '',
+        ''
     );
     
     maxart_widget_registration(
@@ -242,21 +241,21 @@ function maxart_multiple_widget_init()
         '',
         '<ul class="nav flex-column">',
         '</ul>',
-        '<h5>',
+        '<h5  style="color:white;">',
         '</h5>',
-        '<div class="col-md-6 col-lg-3"style="margin-bottom:15px;">',
-        '</div>'
+        '',
+        ''
     );
     maxart_widget_registration(
         'Location',
         'siderbarLocation',
         '',
-        '<h5>Location</h5><ul class="nav flex-column">',
+        '<h5  style="color:white;">Location</h5><ul class="nav flex-column">',
         '</ul>',
-        '<li class="nav-item mb-2">',
+        '<li class="nav-item mb-2" style="font-weight:600">',
         '</li>',
-        '<div class="col-md-6 col-lg-3"style="margin-bottom:15px;">',
-        '</div>'
+        '',
+        ''
     );
 }
 
@@ -286,3 +285,9 @@ function maxart_add_woocommerce_support()
 
 add_action('after_setup_theme', 'maxart_add_woocommerce_support');
 // add_filter( 'woocommerce_enqueue_styles', '__return_false' );
+
+// add support html5 in search form 
+add_theme_support('html5',array('search-form'));
+
+
+

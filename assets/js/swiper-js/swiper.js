@@ -14,3 +14,13 @@ var swiper = new Swiper(".format-image", {
       clickable: true,
     },
   });
+
+  var swiper = new Swiper(".Relatedproducts", {
+    slidesPerView: 3,
+    spaceBetween: 30,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    
+  });

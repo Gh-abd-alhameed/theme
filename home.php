@@ -70,6 +70,13 @@ get_header();
                 'post_type' => 'product',
                 'posts_per_page' => 6,
                 'paged' => 1,
+                'tax_query' => array(
+                    array(
+                        'taxonomy' => 'product_cat',
+                        'field'    => 'slug',
+                        'terms'    => 'Tshirts',
+                    ),
+                ),
 
             );
             $loop = new WP_Query($args);
@@ -77,6 +84,8 @@ get_header();
                 while ($loop->have_posts()) : $loop->the_post();
                     get_template_part('templates/content', 'product');
                 endwhile;
+            else:
+                do_action('woocommerce_no_products_found');
             endif;
             wp_reset_postdata();
             ?>
@@ -97,13 +106,7 @@ get_header();
 </section>
 
 <!-- A unique Adventure -->
-<!-- 'tax_query' => array(
-                    array(
-                        'taxonomy' => 'product_cat',
-                        'field'    => 'slug',
-                        'terms'    => 'Tshirts',
-                    ),
-                ), -->
+
 
 <section class="unique-adventure" style="background-color: #0d0d19;">
     <div class="container text-center pt-5 pb-5">

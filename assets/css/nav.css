@@ -68,106 +68,24 @@
 .main-menu nav .container .collapse ul li a:hover {
   color: white;
 }
-
-/* .main-menu .navbar .container,
-.main-menu .navbar,
-.main-menu .navbar .container .navbar-brand{
-    padding: 0;
-} */
-/* @media (max-width:992px) {
-  .main-menu .navbar{
-    background: #212529 !important;
-  }
-} */
-
-/* .main-menu .navbar .container .collapse .navbar-nav {
-    height: 100%;
-} */
-
-/* @media (max-width: 992px) {
-  .main-menu .navbar .container .collapse .navbar-nav {
-      background-color: #21252970 !important;
-  }
-
-} */
-
-/* 
-@media (min-width:768px) {
-  .main-menu .navbar .container .collapse .navbar-nav {
-      margin: auto auto ;
-
-  }
+.main-menu nav .container .collapse .search-form label .form-control{
+  color: var(--main-color);
 }
-*/
-/* .main-menu .navbar .container .collapse .navbar-nav .nav-item {
-    text-align: center;
-    padding: 20px;
-    height: 100%;
-}  */
-
-/* .main-menu .navbar .container .collapse .navbar-nav .nav-item:hover{
-    background-color:  rgba(209, 209, 209, 0.815);
-} */
-/* @media (min-width: 995px) {
-  .main-menu .navbar .container .collapse .navbar-nav .nav-item:hover{
-      background-color:  rgba(209, 209, 209, 0.815);
-  }
-} */
-
-/* 
-.main-menu .navbar .container .collapse .navbar-nav .nav-item .nav-link{
-    min-height: 100%;
-    min-width: 100%;
-    font-size: 20px;
-    color: black;
+.main-menu nav .container .collapse .search-form label .form-control:focus {
+  outline: 3px solid  var(--main-color) !important;
+  box-shadow: none !important;
 }
-@media (max-width:995px) {
-  .main-menu .navbar .container .collapse .navbar-nav .nav-item .nav-link{
-    color: white ;
-  }
-
-
-
-} */
-/* .main-menu .navbar .container .collapse .vr{ */
-/* background-color: transparent !important; */
-/* margin: ; */
-/* } */
-/* .main-menu .navbar .container .collapse .navbar-nav .nav-item .active{
-    color: var(--main-color);
-
-} */
-/* .main-menu .navbar .container .collapse .Contact .btn{
-    background-color:var(--main-color) ;
-    border-color: var(--main-color) ;
-    color : white;
+.main-menu nav .container .collapse .search-form button {
+  border-width: 2px !important;
+  border-color: var(--main-color) !important;
+  color: white !important;
 }
-.Contact {
-    margin: 0;
-    padding: 0;
-
+.main-menu nav .container .collapse .search-form button:hover{
+  background-color: var(--main-color) !important;
+  color: white !important;
 }
-@media (max-width : 992px)  {
-  .Contact {
-      display: none ;
-
-  }
-} */
-/* .Contact .btn i{
-    color: white;
-
-}
-.Contact  .fa-whatsapp {
-    color: black;
-
-} 
- End Navbar 
 
 
-
-
-
-*/
 
 .dropdown-menu {
   position: absolute;
@@ -229,8 +147,5 @@
   }
 }
 
-/* @media (min-width : 992px){
-  .dropdown-menu .dropdown-submenu-left {
-    display: block;
-  }
-} */
+
+
