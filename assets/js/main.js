@@ -19,7 +19,7 @@ document.body.onclick = function (e) {
       });
       if (response.ok) {
         let data = await response.text();
-        load_more.setAttribute("data-page" , ++numpage);
+        load_more.setAttribute("data-page", ++numpage);
         div_print.innerHTML =div_print.innerHTML +  data ;
       }
     }

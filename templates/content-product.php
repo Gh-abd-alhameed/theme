@@ -17,7 +17,7 @@ global $product;
                 if ($attachments) :
                     foreach ($attachments as $attachment) : ?>
                         <div class="swiper-slide">
-                            <img src="<?php echo esc_url($attachment); ?>" class="img-fluid" style="background-size: contain;background-repeat: no-repeat;" alt="">
+                            <img src="<?php echo esc_url($attachment);?>" class="img-fluid" style="background-size: contain;background-repeat: no-repeat;" alt="">
                         </div>
                 <?php
                     endforeach;
