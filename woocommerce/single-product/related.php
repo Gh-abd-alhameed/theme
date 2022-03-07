@@ -30,7 +30,7 @@ if ($related_products) : ?>
 
 		if ($heading) :
 		?>
-			<h2><?php echo esc_html($heading); ?></h2>
+			<h2 style="color:#8016A5;"><?php echo esc_html($heading); ?></h2>
 		<?php endif; ?>
 
 
@@ -55,7 +55,6 @@ if ($related_products) : ?>
 			<div class="swiper-button-next"></div>
 			<div class="swiper-button-prev"></div>
 			<?php woocommerce_product_loop_end(); ?>
-
 		</div>
 	</section>
 <?php
