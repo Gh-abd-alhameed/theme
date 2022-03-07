@@ -81,6 +81,7 @@ get_header();
             wp_reset_postdata();
             ?>
         </div>
+        
         <div class="row">
             <div class="col-12">
                 <a id="load_more" class="btn mx-auto" style="color: white;font-weight:bold;background-color:#8016A5; width:fit-content;" data-page="1" data-url="<?php echo esc_url(admin_url('admin-ajax.php')); ?>">

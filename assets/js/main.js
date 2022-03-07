@@ -13,14 +13,21 @@ document.body.onclick = function (e) {
     formdata.append("page", page);
     get_data_product(url, formdata);
     async function get_data_product() {
-      let response = await fetch(url, {
+      let response = await fetch(url,{
         method: "POST",
         body: formdata,
       });
       if (response.ok) {
         let data = await response.text();
         load_more.setAttribute("data-page", ++numpage);
-        div_print.innerHTML =div_print.innerHTML +  data ;
+        div_print.innerHTML = div_print.innerHTML + data ;
+        var swiper = new Swiper(".format-gallery", {
+          spaceBetween: 30,
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+        });
       }
     }
   }
