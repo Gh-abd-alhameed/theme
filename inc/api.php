@@ -59,7 +59,7 @@ add_action('wp_ajax_maxart_product_homepage', 'maxart_product_homepage');
 function maxart_product_homepage()
 {
     if (isset($_POST['page']) && !empty($_POST['page'])) {
-        $page = $_POST['page']++;
+        $page = $_POST['page']+1;
         
         $args = array(
             'post_type'=>'product',
