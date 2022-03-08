@@ -136,7 +136,13 @@ function woocommerce_template_single_excerpt()
     global $product;
     echo '<p class="load" style="color:white;">' . $product->get_short_description() . '</p>';
 }
-
+remove_action('woocommerce_single_product_summary','woocommerce_template_single_add_to_cart',30);
+add_action('woocommerce_single_product_summary','woocommerce_template_single_add_to_cart',30);
+function woocommerce_template_single_add_to_cart(){
+    global $product;
+    $whatsapp = get_option('maxart_register_whatsapp');
+    echo '<a id="send-form-contact" href="https://api.whatsapp.com/send?phone='.$whatsapp.'&text=product-ID: '.$product->get_id().' product-name: '.$product->get_name().' product-url: '.get_permalink($product->get_id()).'" class="btn my-3 w-25 p-2" style="background-color:#8016a5;color:white;font-weight:bold;">Buy</a>';
+}
 // custom meta single product
 remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
 add_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
@@ -162,3 +168,6 @@ function woocommerce_template_single_meta()
 
 remove_action('woocommerce_after_single_product_summary','woocommerce_upsell_display',15);
 remove_action('woocommerce_after_single_product_summary','woocommerce_output_related_products',20);
+
+
+

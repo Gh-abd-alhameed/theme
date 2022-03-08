@@ -12,7 +12,7 @@ var swiper = new Swiper(".format-image", {
     spaceBetween: 30,
     loop: true,
     autoplay: {
-      delay: 2500,
+      delay: 3500,
       disableOnInteraction: true,
     },
     pagination: {

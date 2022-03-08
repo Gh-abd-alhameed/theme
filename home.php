@@ -46,7 +46,7 @@ get_header();
                     </div>
                     <div class="col-12">
                         <input id="url-api" type="text" hidden data-url="<?php echo esc_attr(admin_url('admin-ajax.php')); ?>">
-                        <a id="send-form-contact" class="btn-form-contact">Send</a>
+                        <a id="send-form-contact" class="btn btn-form-contact" style="background-color:#8016a5;color:white;font-weight:bold;">Send</a>
                     </div>
             </form>
         </div>

@@ -4,7 +4,7 @@ document.body.onclick = function (e) {
     let url = e.target.getAttribute("data-url");
     let page = e.target.getAttribute("data-page");
     let numpage = page++;
-    let msg = document.getElementById('msg_api');
+    let msg = document.getElementById("msg_api");
     let action = "maxart_product_homepage";
     let div_print = document.getElementById("print_data");
     let headers = new Headers();
@@ -21,19 +21,20 @@ document.body.onclick = function (e) {
       if (response.ok) {
         let data = await response.text();
         load_more.setAttribute("data-page", ++numpage);
-        
-        if (data !== '0') {
+
+        if (data !== "0") {
           div_print.innerHTML = div_print.innerHTML + data;
         } else {
           msg.style.display = "block";
           load_more.style.display = "none";
         }
-
         var swiper = new Swiper(".format-gallery", {
+          slidesPerView: 1,
           spaceBetween: 30,
-          pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
+          loop: true,
+          autoplay: {
+            delay: 3500,
+            disableOnInteraction: true,
           },
         });
       }
