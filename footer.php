@@ -1,5 +1,7 @@
 <footer class="pt-4" style="background-color:#0d0d19;">
+    
     <div class="container justify-content-center ">
+    <hr class="my-5" style="width:100%;height:1px;color:white;">
         <div class="row justify-content-center">
             <?php get_sidebar('About') ?>
             <?php get_sidebar('Our Services') ?>
