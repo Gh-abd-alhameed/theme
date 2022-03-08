@@ -122,7 +122,7 @@ add_action('woocommerce_single_product_summary', 'woocommerce_template_single_pr
 function woocommerce_template_single_price()
 {
     global $product;
-    echo '<div class="box-price d-flex flex-row" style="border:1px dashed #8016A5;color:#8016A5;width:fit-content;">';
+    echo '<div class="box-price d-flex flex-row my-3" style="border:1px dashed #8016A5;color:#8016A5;width:fit-content;">';
     echo '<h4 class=" load my-auto py-2 px-2 fw-bold " >' .  $product->get_price() . ' ' . get_woocommerce_currency_symbol() . ' / Day</h4>';
     echo '<h6 class=" load my-auto py-2 px-2 fw-bold" style="text-decoration: line-through; text-align:center">' . $product->get_regular_price() . ' ' . get_woocommerce_currency_symbol() . ' / Day</h6>';
     echo '</div>';
@@ -142,7 +142,7 @@ add_action('woocommerce_single_product_summary','woocommerce_template_single_add
 function woocommerce_template_single_add_to_cart(){
     global $product;
     $whatsapp = get_option('maxart_register_whatsapp');
-    echo '<a id="send-form-contact" href="https://api.whatsapp.com/send?phone='.$whatsapp.'&text=product-ID: '.$product->get_id().' product-name: '.$product->get_name().' product-url: '.get_permalink($product->get_id()).'" class="btn my-3 w-25 p-2" style="background-color:#8016a5;color:white;font-weight:bold;">Buy</a>';
+    echo '<a id="send-form-contact" href="https://api.whatsapp.com/send?phone='.$whatsapp.'&text=Product ID: '.$product->get_id().' | Product Name: '.$product->get_name().' | Product URL: '.get_permalink($product->get_id()).'" class="btn my-3 w-25 p-2" style="background-color:#8016a5;color:white;font-weight:bold;">Buy</a>';
 }
 // custom meta single product
 remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
