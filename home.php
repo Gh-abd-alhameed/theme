@@ -14,10 +14,13 @@ get_header();
         <h1 class="fw-bold ">Fast Car Rental Dubai</h1>
         <p class="lead text-break ">Dreams do come true in the world of cars. At Fast Car Rental Dubai, your dream
             car is one click away.</p>
-        <div class="row ">
+
+
+
+        <div class="row w-100">
             <form class="col-lg-12" action="" method="get">
                 <div class="row">
-                    <div id="show-msg-form" class="col-12 load alert alert-danger"></div>
+
 
                     <div class="col-lg-4   mx-auto">
                         <label class="color-white pb-3" for="yourname">Name *</label>
@@ -45,7 +48,11 @@ get_header();
                         <input type="text" id="message-form-contact" class="form-control" require id="" placeholder="Your Message" aria-label="Last name" rows="3">
                     </div>
                     <div class="col-12">
+                        <div id="show-msg-form" class="alert w-100">
+                            <p class="load">There is an error in the data</p>
+                        </div>
                         <input id="url-api" type="text" hidden data-url="<?php echo esc_attr(admin_url('admin-ajax.php')); ?>">
+
                         <a id="send-form-contact" class="btn btn-form-contact" style="background-color:#8016a5;color:white;font-weight:bold;">Send</a>
                     </div>
             </form>
@@ -84,23 +91,23 @@ get_header();
                 while ($loop->have_posts()) : $loop->the_post();
                     get_template_part('templates/content', 'product');
                 endwhile;
-            else:
+            else :
                 do_action('woocommerce_no_products_found');
             endif;
             wp_reset_postdata();
             ?>
         </div>
-        
+
         <div class="row">
-        <div id="msg_api" class="col-12  bg-danger text-center m-3 p-1 " style="display: none; ">
-        <p class="load" style="font-weight:bold;  color:white;">no products</p>
-    </div>
+            <div id="msg_api" class="col-12  bg-danger text-center m-3 p-1 " style="display: none; ">
+                <p class="load" style="font-weight:bold;  color:white;">no products</p>
+            </div>
             <div class="col-12">
-            
+
                 <a id="load_more" class="btn mx-auto" style="color: white;font-weight:bold;background-color:#8016A5; width:fit-content;" data-page="1" data-url="<?php echo esc_url(admin_url('admin-ajax.php')); ?>">
-                load more    
-                <!-- <img  src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/icon/arrows-rotate.svg');  ?>" style="width:40px; height:40px;""  alt=""> -->
-            </a>
+                    load more
+                    <!-- <img  src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/icon/arrows-rotate.svg');  ?>" style="width:40px; height:40px;""  alt=""> -->
+                </a>
 
             </div>
         </div>
@@ -122,14 +129,14 @@ get_header();
             <div class="col-lg-3 text-center  ">
 
                 <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/icon7.webp'); ?>" style="width:65px;height:65;" alt="">
-                <p class="text-light  load fw-bold" >Unbeatable Prices</p>
+                <p class="text-light  load fw-bold">Unbeatable Prices</p>
                 <p class="load text-light" style="font-size:15px;">Satisfy yourself with unbeatable rental prices
                     around the UAE with reasonable prices and long-term deals.</p>
             </div>
             <div class="col-lg-3 text-center" style="border-left: 2px solid white;">
 
                 <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/icon8.webp'); ?>" style="width:65px;height:65;" alt="">
-                <p class="text-light load fw-bold" >Your Choice of Professionalism</p>
+                <p class="text-light load fw-bold">Your Choice of Professionalism</p>
                 <p class="load text-light" style="font-size:15px;">Add a touch of comfort to your experience with
                     our professional team. Your admired model comes with ease.</p>
             </div>
@@ -137,7 +144,7 @@ get_header();
             <div class="col-lg-3 text-center load " style=" border-left: 2px solid white;">
 
                 <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/icon9.webp'); ?>" style="width:65px;height:65;" alt="">
-                <p class="text-light  load fw-bold" >Suits Every Budget</p>
+                <p class="text-light  load fw-bold">Suits Every Budget</p>
                 <p class="load text-light" style="font-size:15px;">If you dream it, we have it for you. Rent your
                     desired model with your type of budget, no one else's.</p>
             </div>
@@ -145,7 +152,7 @@ get_header();
             <div class="col-lg-3 text-center " style="border-left: 2px solid white;">
 
                 <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/icon10.webp'); ?>" style="width:65px;height:65;" alt="">
-                <p class=" load text-light fw-bold" >24/7 Assistance</p>
+                <p class=" load text-light fw-bold">24/7 Assistance</p>
                 <p class="load text-light" style="font-size:15px;">Hit our hotline for any kind of emergency. We are
                     always here to help fast and skillfully!</p>
             </div>

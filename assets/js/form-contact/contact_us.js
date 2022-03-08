@@ -30,7 +30,6 @@ document.onclick = function (e) {
           let whatsapp = window.location.href = `https://api.whatsapp.com/send?phone=${phone}&text=${message}`
       }else{
         show_message.style.display = "block";
-        show_message.innerHTML = 'There is an error in the data';
       }
     }
     
