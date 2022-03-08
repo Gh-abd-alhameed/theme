@@ -33,3 +33,26 @@
     object-fit: cover;
   }
 
+
+
+
+  
+  .best-modified-cars .container .product .related_products .related_product {
+    width: 100%;
+    height: fit-content;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  .best-modified-cars .container .product .related_products .related_product .swiper-wrapper .slide-product {
+    background-position: center;
+    background-size: cover;
+    width: 350px;
+    height:fit-content;
+  }
+
+  .best-modified-cars .container .product .related_products .related_product .swiper-wrapper .slide-product .itme-product {
+    display: block;
+    width: 100%;
+  }
+

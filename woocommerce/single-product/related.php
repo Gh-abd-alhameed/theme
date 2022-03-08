@@ -22,9 +22,7 @@ if (!defined('ABSPATH')) {
 
 if ($related_products) : ?>
 
-	<section class="related products">
-
-
+	<section class="related_products">
 		<?php
 		$heading = apply_filters('woocommerce_product_related_products_heading', __('Related products', 'woocommerce'));
 
@@ -34,28 +32,32 @@ if ($related_products) : ?>
 		<?php endif; ?>
 
 
-		<div class="swiper Relatedproducts">
 
-			<?php woocommerce_product_loop_start(); ?>
-			<div class="swiper-wrapper">
 
+		<?php woocommerce_product_loop_start(); ?>
+
+		<div class="swiper related_product">
+			<div class="swiper-wrapper" style="height:fit-content;">
 				<?php foreach ($related_products as $related_product) : ?>
-					<div class="swiper-slide">
-						<?php
-						$post_object = get_post($related_product->get_id());
 
-						setup_postdata($GLOBALS['post'] = &$post_object); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found
+					<?php
+					$post_object = get_post($related_product->get_id());
 
-						wc_get_template_part('content', 'product-slide');
-						?>
-					</div>
+					setup_postdata($GLOBALS['post'] = &$post_object); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found
+
+					wc_get_template_part('content', 'product-slide');
+					?>
+
 				<?php endforeach; ?>
+
 
 			</div>
 			<div class="swiper-button-next"></div>
 			<div class="swiper-button-prev"></div>
-			<?php woocommerce_product_loop_end(); ?>
+			<div class="swiper-pagination"></div>
 		</div>
+		<?php woocommerce_product_loop_end(); ?>
+
 	</section>
 <?php
 endif;
