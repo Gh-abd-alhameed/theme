@@ -142,7 +142,7 @@ add_action('woocommerce_single_product_summary','woocommerce_template_single_add
 function woocommerce_template_single_add_to_cart(){
     global $product;
     $whatsapp = get_option('maxart_register_whatsapp');
-    echo '<a id="send-form-contact" href="https://api.whatsapp.com/send?phone='.$whatsapp.'&text=Product Name: '.$product->get_name().' | Product URL: '.get_permalink($product->get_id()).'" class="btn my-3 w-25 p-2" style="background-color:#8016a5;color:white;font-weight:bold;">Buy</a>';
+    echo '<a id="send-form-contact" href="https://api.whatsapp.com/send?phone='.$whatsapp.'&text=Product Name: '.$product->get_name().' | Product URL: '.get_permalink($product->get_id()).'" class="btn my-3 w-25 p-2" style="background-color:#8016a5;color:white;font-weight:bold;">Book Now</a>';
 }
 // custom meta single product
 remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);

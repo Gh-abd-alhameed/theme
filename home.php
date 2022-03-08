@@ -47,13 +47,12 @@ get_header();
                         <label class="color-white pb-3" for="yourmessag">Your Message</label>
                         <input type="text" id="message-form-contact" class="form-control" require id="" placeholder="Your Message" aria-label="Last name" rows="3">
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 text-center">
                         <div id="show-msg-form" class="alert w-100">
                             <p class="load">There is an error in the data</p>
                         </div>
                         <input id="url-api" type="text" hidden data-url="<?php echo esc_attr(admin_url('admin-ajax.php')); ?>">
-
-                        <a id="send-form-contact" class="btn btn-form-contact" style="background-color:#8016a5;color:white;font-weight:bold;">Send</a>
+                        <a id="send-form-contact" class="btn btn-form-contact m-0" style="background-color:#8016a5;color:white;font-weight:bold;">Send</a>
                     </div>
             </form>
         </div>

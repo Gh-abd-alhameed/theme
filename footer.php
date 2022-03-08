@@ -1,6 +1,6 @@
 <footer class="pt-4" style="background-color:#0d0d19;">
     <div class="container justify-content-center ">
-        <div class="row justify-content-center ">
+        <div class="row justify-content-center">
             <?php get_sidebar('About') ?>
             <?php get_sidebar('Our Services') ?>
             <?php get_sidebar('Get In Touch') ?>
