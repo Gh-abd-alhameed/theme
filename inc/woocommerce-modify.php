@@ -136,6 +136,7 @@ function woocommerce_template_single_excerpt()
     global $product;
     echo '<p class="load" style="color:white;">' . $product->get_short_description() . '</p>';
 }
+// remove and add button add to cart custom
 remove_action('woocommerce_single_product_summary','woocommerce_template_single_add_to_cart',30);
 add_action('woocommerce_single_product_summary','woocommerce_template_single_add_to_cart',30);
 function woocommerce_template_single_add_to_cart(){
