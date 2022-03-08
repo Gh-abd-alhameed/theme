@@ -122,30 +122,30 @@ get_header();
             <div class="col-lg-3 text-center  ">
 
                 <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/icon7.webp'); ?>" style="width:65px;height:65;" alt="">
-                <p class="text-light  " style="font-size:20px">Unbeatable Prices</p>
+                <p class="text-light  load fw-bold" >Unbeatable Prices</p>
                 <p class="load text-light" style="font-size:15px;">Satisfy yourself with unbeatable rental prices
                     around the UAE with reasonable prices and long-term deals.</p>
             </div>
             <div class="col-lg-3 text-center" style="border-left: 2px solid white;">
 
                 <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/icon8.webp'); ?>" style="width:65px;height:65;" alt="">
-                <p class="text-light " style="font-size:20px">Your Choice of Professionalism</p>
+                <p class="text-light load fw-bold" >Your Choice of Professionalism</p>
                 <p class="load text-light" style="font-size:15px;">Add a touch of comfort to your experience with
                     our professional team. Your admired model comes with ease.</p>
             </div>
 
-            <div class="col-lg-3 text-center  " style=" border-left: 2px solid white;">
+            <div class="col-lg-3 text-center load " style=" border-left: 2px solid white;">
 
                 <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/icon9.webp'); ?>" style="width:65px;height:65;" alt="">
-                <p class="text-light   " style="font-size:20px">Suits Every Budget</p>
+                <p class="text-light  load fw-bold" >Suits Every Budget</p>
                 <p class="load text-light" style="font-size:15px;">If you dream it, we have it for you. Rent your
                     desired model with your type of budget, no one else's.</p>
             </div>
 
-            <div class="col-lg-3 text-center  " style=" border-left: 2px solid white;">
+            <div class="col-lg-3 text-center " style="border-left: 2px solid white;">
 
                 <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/icon10.webp'); ?>" style="width:65px;height:65;" alt="">
-                <p class="text-light  " style="font-size:20px">24/7 Assistance</p>
+                <p class=" load text-light fw-bold" >24/7 Assistance</p>
                 <p class="load text-light" style="font-size:15px;">Hit our hotline for any kind of emergency. We are
                     always here to help fast and skillfully!</p>
             </div>
