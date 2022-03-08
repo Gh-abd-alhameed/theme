@@ -48,6 +48,14 @@ function  maxart_contact_us()
         );
         $postID = wp_insert_post($args);
         echo $postID;
+        if ($postID !== 0){
+            $to = get_bloginfo('admin_email');
+            $subject = 'Maxart Contact From-'.$name;
+            $headers[] = 'From:' . get_bloginfo('name') .'<'.$email.'>';
+            $headers[] = 'Reply-To:'.$name.'<'. $email .'>';
+            $headers[] = 'Content-Type:text/html;';
+            wp_mail( $to, $subject, $message,  $headers);
+        }
     } else {
         echo "0";
     }
@@ -60,7 +68,6 @@ function maxart_product_homepage()
 {
     if (isset($_POST['page']) && !empty($_POST['page'])) {
         $page = $_POST['page']+1;
-        
         $args = array(
             'post_type'=>'product',
             'posts_per_page'=>3,
@@ -80,11 +87,11 @@ function maxart_product_homepage()
                 echo get_template_part('./templates/content','product');
             }
         }else{
-            echo '<div class="col-12"><p class="load color-danger bg-light">not product</div>';
+            echo 0;
         }
         wp_reset_postdata();
     } else {
-        echo 'not set and empty';
+        echo 0;
     }
     wp_die();
 }

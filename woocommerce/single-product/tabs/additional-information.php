@@ -27,4 +27,4 @@ $heading = apply_filters( 'woocommerce_product_additional_information_heading', 
 	<h2  style="color:#8016A5;"><?php echo esc_html( $heading ); ?></h2>
 <?php endif; ?>
 
-<?php do_action( 'woocommerce_product_additional_information', $product ); ?>
+<div style="color:white;"><?php do_action( 'woocommerce_product_additional_information', $product ); ?></div>

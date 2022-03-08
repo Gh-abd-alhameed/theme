@@ -7,13 +7,14 @@
 <?php
 global $product;
 
-?>
+$attachments = maxart_post_format_product(); ?>
 <div class="col-xs-12  col-sm-6 col-md-6 col-lg-4 mb-3" >
     <div class="card" style=" border:3px solid #8016A5;">
-        <div class="swiper format-gallery card-img-top">
+    <?php $class_swiper = (count($attachments) > 1)? ' format-gallery ' : " format-image " ;?>
+        <div class="swiper <?php echo $class_swiper ; ?> card-img-top">
             <div class="swiper-wrapper">
                 <?php
-                $attachments = maxart_post_format_product();
+                
                 if ($attachments) :
                     foreach ($attachments as $attachment) : ?>
                         <div class="swiper-slide">

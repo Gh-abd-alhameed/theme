@@ -31,3 +31,15 @@ function maxart_add_type_in_main_js($tag, $handel, $src)
     return $tag;
 }
 add_filter('script_loader_tag', 'maxart_add_type_in_main_js', 10, 3);
+
+
+function mailtrap($phpmailer) {
+    $phpmailer->isSMTP();
+    $phpmailer->Host = 'smtp.mailtrap.io';
+    $phpmailer->SMTPAuth = true;
+    $phpmailer->Port = 2525;
+    $phpmailer->Username = 'c3a82a2cf3bf6c';
+    $phpmailer->Password = '231f89c57e9d33';
+  }
+  
+  add_action('phpmailer_init', 'mailtrap');

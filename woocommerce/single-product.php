@@ -23,6 +23,7 @@ if (!defined('ABSPATH')) {
 get_header('shop'); ?>
 <section class="best-modified-cars" style="background-color: #0d0d19;">
 	<div class="container pt-5">
+
 		<?php
 		/**
 		 * woocommerce_before_main_content hook.
@@ -30,17 +31,18 @@ get_header('shop'); ?>
 		 * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
 		 * @hooked woocommerce_breadcrumb - 20
 		 */
+
 		do_action('woocommerce_before_main_content');
 		?>
+		
+			<?php while (have_posts()) : ?>
+				<?php the_post(); ?>
 
-		<?php while (have_posts()) : ?>
-			<?php the_post(); ?>
+				<?php wc_get_template_part('content', 'single-product'); ?>
 
-			<?php wc_get_template_part('content','single-product'); ?>
-
-		<?php endwhile; // end of the loop. 
-		?>
-
+			<?php endwhile; // end of the loop. 
+			?>
+		
 		<?php
 		/**
 		 * woocommerce_after_main_content hook.

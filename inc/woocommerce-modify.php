@@ -26,7 +26,7 @@ function maxart_remove_title_page_shop($val)
 /*
 **********************************
 *
-*         Single Product 
+*        Loop Product 
 *
 **********************************
 */
@@ -45,6 +45,7 @@ function woocommerce_template_loop_product_link_close()
     echo "";
 }
 
+
 // Change button add to card 
 add_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10);
 function woocommerce_template_loop_add_to_cart()
@@ -52,6 +53,10 @@ function woocommerce_template_loop_add_to_cart()
     global $product;
     echo '<a href="' . get_permalink($product->get_id()) . '" class="btn ms-3 py-auto"  style="background-color: #8016A5 ; color:white;">Book Now</a>';
 }
+
+//remove rating in product loop
+remove_action('woocommerce_after_shop_loop_item_title','woocommerce_template_loop_rating',5);
+
 // change title product in shop page 
 remove_action('woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10);
 add_action('woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10);
@@ -98,7 +103,10 @@ function woocommerce_catalog_ordering()
  *   Single Product
  *************************/
 
-remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_title', 5);
+/***************************************************************/
+// @hooks single product woocommerce_single_product_summary  
+/***************************************************************/
+remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_title',5);
 add_action('woocommerce_single_product_summary', 'woocommerce_template_single_title', 5);
 function woocommerce_template_single_title()
 {
@@ -107,6 +115,7 @@ function woocommerce_template_single_title()
     echo '<h1 class="card-title pb-4" style="color:#8016A5; font-weight:bold;">' . $product->get_name() . '</h1>';
     echo '</a>';
 }
+remove_action('woocommerce_single_product_summary','woocommerce_template_single_rating',10);
 
 remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_price', 10);
 add_action('woocommerce_single_product_summary', 'woocommerce_template_single_price', 10);
@@ -146,3 +155,10 @@ function woocommerce_template_single_meta()
     echo '</p>';
     echo '</div>';
 }
+/***************************************************************/
+// @hooks single product woocommerce_after_single_product_summary
+/***************************************************************/
+// remove related products in single product page
+
+remove_action('woocommerce_after_single_product_summary','woocommerce_upsell_display',15);
+remove_action('woocommerce_after_single_product_summary','woocommerce_output_related_products',20);

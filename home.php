@@ -92,7 +92,11 @@ get_header();
         </div>
         
         <div class="row">
+        <div id="msg_api" class="col-12  bg-danger text-center m-3 p-1 " style="display: none; ">
+        <p class="load" style="font-weight:bold;  color:white;">no products</p>
+    </div>
             <div class="col-12">
+            
                 <a id="load_more" class="btn mx-auto" style="color: white;font-weight:bold;background-color:#8016A5; width:fit-content;" data-page="1" data-url="<?php echo esc_url(admin_url('admin-ajax.php')); ?>">
                 load more    
                 <!-- <img  src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/icon/arrows-rotate.svg');  ?>" style="width:40px; height:40px;""  alt=""> -->
