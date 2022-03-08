@@ -48,13 +48,22 @@ function  maxart_contact_us()
         );
         $postID = wp_insert_post($args);
         echo $postID;
-        if ($postID !== 0){
+        if ($postID !== 0) {
             $to = get_bloginfo('admin_email');
-            $subject = 'Maxart Contact From-'.$name;
-            $headers[] = 'From:' . get_bloginfo('name') .'<'.$email.'>';
-            $headers[] = 'Reply-To:'.$name.'<'. $email .'>';
+            $subject = 'Maxart Contact From-' . $name;
+            $headers[] = 'From:' . get_bloginfo('name') . '<' . $email . '>';
+            $headers[] = 'Reply-To:' . $name . '<' . $email . '>';
             $headers[] = 'Content-Type:text/html;';
-            wp_mail( $to, $subject, $message,  $headers);
+            $msg = '<dvi>';
+            $msg .= '<h3>Form: </h3>' . '<h4>' . $name . '</h4>';
+            $msg .= '</dvi>';
+            $msg .= '<dvi>';
+            $msg .= '<h3>Email: </h3>' . '<h4>' . $email . '</h4>';
+            $msg .= '</dvi>';
+            $msg .= '<dvi>';
+            $msg .= '<h3>Message: </h3>' . '<h4>' . $message . '</h4>';
+            $msg .= '</dvi>';
+            wp_mail($to, $subject, $msg,  $headers);
         }
     } else {
         echo "0";
@@ -67,11 +76,11 @@ add_action('wp_ajax_maxart_product_homepage', 'maxart_product_homepage');
 function maxart_product_homepage()
 {
     if (isset($_POST['page']) && !empty($_POST['page'])) {
-        $page = $_POST['page']+1;
+        $page = $_POST['page'] + 1;
         $args = array(
-            'post_type'=>'product',
-            'posts_per_page'=>3,
-            'paged'=> $page,
+            'post_type' => 'product',
+            'posts_per_page' => 3,
+            'paged' => $page,
             'tax_query' => array(
                 array(
                     'taxonomy' => 'product_cat',
@@ -81,12 +90,12 @@ function maxart_product_homepage()
             ),
         );
         $products = new WP_Query($args);
-        if($products->have_posts()){
-            while($products->have_posts()){
-                $products->the_post(); 
-                echo get_template_part('./templates/content','product');
+        if ($products->have_posts()) {
+            while ($products->have_posts()) {
+                $products->the_post();
+                echo get_template_part('./templates/content', 'product');
             }
-        }else{
+        } else {
             echo 0;
         }
         wp_reset_postdata();

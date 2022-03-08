@@ -34,7 +34,7 @@ $attachments = maxart_post_format_product(); ?>
             </a>
 
             <div class="  d-flex flex-row justify-content-center  align-items-center">
-                <h6 class="box-price load my-auto py-2 px-2 fw-bold " style="border:1px dashed #adb5bd;color:#8016A5;"><?php echo $product->get_price().' '.get_woocommerce_currency_symbol(); ?></h6>
+                <h6 class="box-price load my-auto py-2 px-2 fw-bold " style="border:1px dashed #adb5bd;color:#8016A5;"><?php echo $product->get_price().' '.get_woocommerce_currency_symbol(); ?> / Day</h6>
                 <i class="fa-brands fa-whatsapp ms-auto" style="width:30px;height:30px;"></i>
                 <a href="<?php echo get_permalink($product->get_id()); ?>" class="btn ms-3 py-auto" style="background-color:#8016A5;color:white;">Book Now</a>
             </div>
