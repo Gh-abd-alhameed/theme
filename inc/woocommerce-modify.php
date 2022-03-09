@@ -64,7 +64,7 @@ function woocommerce_template_loop_product_title()
 {
     global $product;
     echo '<a href="' . get_permalink($product->get_id()) . '" style="text-decoration:none;">';
-    echo '<h5 class="card-title pb-4" style="color:#8016A5; font-weight:bold;">' . $product->get_name() . '</h5>';
+    echo '<h5 class="card-title pb-4" style="color:#8016A5; font-weight:bold;font-size: 1.1rem;padding-top: 3px;">' . $product->get_name() . '</h5>';
     echo '</a>';
 }
 

@@ -64,7 +64,7 @@ $attachments = maxart_post_format_product();
 			<div class="swiper-pagination"></div>
 		</div>
 
-		<div class="card-body w-100">
+		<div class="card-body w-100" style="pading:5px;">
 			<?php
 			/**
 			 * Hook: woocommerce_shop_loop_item_title.
@@ -74,7 +74,7 @@ $attachments = maxart_post_format_product();
 			do_action('woocommerce_shop_loop_item_title');
 			?>
 			
-			<div class="  d-flex flex-row justify-content-center  align-items-center">
+			<div class=" d-flex flex-row justify-content-center  align-items-center"style="margin:5px">
 				<?php
 				/**
 				 * Hook: woocommerce_after_shop_loop_item_title.
