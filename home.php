@@ -49,7 +49,7 @@ get_header();
                         </div>
                         <input id="url-api" type="text" hidden data-url="<?php echo esc_attr(admin_url('admin-ajax.php')); ?>">
                         
-                        <input id="phone-site-whatsapp" type="text" hidden data-url="<?php echo esc_attr(get_option('maxart_register_whatsapp')) ?>">
+                        <input id="phone-site-whatsapp" type="text" hidden data-whatsapp="<?php echo esc_attr(get_option('maxart_register_whatsapp')) ?>">
                         <a id="send-form-contact" class="btn btn-form-contact m-0" style="background-color:#8016a5;color:white;font-weight:bold;">Send</a>
                     </div>
             </form>
