@@ -43,7 +43,7 @@ $attachments = maxart_post_format_product(); ?>
             <div class="swiper-pagination"></div>
         </div>
 
-        <div class="card-body w-100" style="padding:5px;">
+        <div class="card-body w-100"style="padding:5px;">
             <?php
             /**
              * Hook: woocommerce_shop_loop_item_title.
