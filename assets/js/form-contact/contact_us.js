@@ -7,6 +7,7 @@ document.onclick = function (e) {
     let email = document.getElementById("email-form-contact").value;
     let name = document.getElementById("name-form-contact").value;
     let phone = document.getElementById("phone-form-contact").value;
+    let whatsapp_site = document.getElementById("phone-site-whatsapp").getAttribute('data-whatsapp');
     let message = document.getElementById("message-form-contact").value;
     let show_message = document.getElementById('show-msg-form');
     let formdata = new URLSearchParams(new FormData());
@@ -27,7 +28,7 @@ document.onclick = function (e) {
       });
       const data = await response.json();
       if (data){
-          let whatsapp = window.location.href = `https://api.whatsapp.com/send?phone=${phone}&text=${message}`
+          let whatsapp = window.location.href = `https://api.whatsapp.com/send?phone=${whatsapp_site}&text=${message}`;
       }else{
         show_message.style.display = "block";
       }

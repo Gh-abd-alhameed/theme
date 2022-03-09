@@ -61,6 +61,9 @@ function  maxart_contact_us()
             $msg .= '<h3>Email: </h3>' . '<h4>' . $email . '</h4>';
             $msg .= '</dvi>';
             $msg .= '<dvi>';
+            $msg .= '<h3>Phone: </h3>' . '<h4>' . $phone . '</h4>';
+            $msg .= '</dvi>';
+            $msg .= '<dvi>';
             $msg .= '<h3>Message: </h3>' . '<h4>' . $message . '</h4>';
             $msg .= '</dvi>';
             wp_mail($to, $subject, $msg,  $headers);

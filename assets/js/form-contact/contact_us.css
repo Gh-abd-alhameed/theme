@@ -1,30 +1,30 @@
-.header .container .row .col-lg-12 div.row {
+ .container .row .col-lg-12 div.row {
   background-color: rgba(0, 0, 0, 0.822);
   padding: 20px;
   border-radius: 20px;
   border: 3px solid var(--main-color);
 }
-.header .container .row .col-lg-12 .row .divider {
+ .container .row .col-lg-12 .row .divider {
   background-color: rgba(255, 255, 255, 0.493);
   padding: 0.1px;
 }
-.header .container .row .col-lg-12 .row .vr {
+ .container .row .col-lg-12 .row .vr {
   color: white;
   margin: -14px;
   padding: 0px;
   height: 80px;
 }
 @media (max-width: 995px) {
-  .header .container .row .col-lg-12 .row .vr {
+  .container .row .col-lg-12 .row .vr {
     display: none;
   }
 }
-.header .container .row .col-lg-12 .row .col-lg-4 {
+ .container .row .col-lg-12 .row .col-lg-4 {
   padding-bottom: 20px;
   text-align: start;
 }
-.header .container .row .col-lg-12 .row .col-lg-4 label,
-.header .container .row .col-lg-12 .row .col-lg-12 .color-white {
+.container .row .col-lg-12 .row .col-lg-4 label,
+.container .row .col-lg-12 .row .col-lg-12 .color-white {
   color: white;
 }
 #show-msg-form {
@@ -40,14 +40,18 @@
 }
 
 
-.header .container .row form .row .col-12 {
+ .container .row form .row .col-12 {
   padding-top: 20px;
 }
-.header .container .row form .row .col-12 .btn-form-contact {
+.container .row form .row .col-12 .btn-form-contact {
   padding: 10px 30px;
   text-decoration: none;
-  background: #8016a5;
-  color: wheat;
+  background-color: transparent;
+  color:white ;
+  border: 2px solid #8016a5;
   border-radius: 8px;
   margin: 20x 0px !important;
+}
+.container .row form .row .col-12 .btn-form-contact:hover{
+  background: #8016a5;
 }

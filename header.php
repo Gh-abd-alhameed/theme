@@ -24,6 +24,9 @@
 </head>
 
 <body <?php body_class(); ?>>
+<div id="loading-screen" class="bg-loading">
+    <div class="loading-spinner"></div>
+</div>
 
 
 

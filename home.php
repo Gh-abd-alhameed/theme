@@ -1,6 +1,6 @@
 <?php
 /* 
-Template Name: HomePage 
+Template Name: Home Page 
 @package maxart
 
 */
@@ -14,22 +14,18 @@ get_header();
         <h1 class="fw-bold ">Fast Car Rental Dubai</h1>
         <p class="lead text-break ">Dreams do come true in the world of cars. At Fast Car Rental Dubai, your dream
             car is one click away.</p>
-
-
-
         <div class="row w-100">
             <form class="col-lg-12" action="" method="get">
                 <div class="row">
 
-
-                    <div class="col-lg-4   mx-auto">
+                    <div class="col-lg-4 mx-auto">
                         <label class="color-white pb-3" for="yourname">Name *</label>
                         <input type="text" id="name-form-contact" class="form-control" require id="yourname" placeholder="Your Name" aria-label="First name" require>
                     </div>
 
                     <div class="vr my-auto"></div>
 
-                    <div class="col-lg-4   mx-auto  ">
+                    <div class="col-lg-4 mx-auto">
                         <label class="color-white pb-3" for="yournumber">Phone *</label>
                         <input type="number" id="phone-form-contact" class="form-control" require id="yournumber" placeholder="Your Number" aria-label="Last name">
                     </div>
@@ -52,14 +48,17 @@ get_header();
                             <p class="load">There is an error in the data</p>
                         </div>
                         <input id="url-api" type="text" hidden data-url="<?php echo esc_attr(admin_url('admin-ajax.php')); ?>">
+                        
+                        <input id="phone-site-whatsapp" type="text" hidden data-url="<?php echo esc_attr(get_option('maxart_register_whatsapp')) ?>">
                         <a id="send-form-contact" class="btn btn-form-contact m-0" style="background-color:#8016a5;color:white;font-weight:bold;">Send</a>
                     </div>
             </form>
         </div>
-
     </div>
 </section>
-<!-- Section Best Modified Cars -->
+
+
+
 
 
 <!-- Section Best Modified Cars -->
@@ -116,7 +115,15 @@ get_header();
 </section>
 
 <!-- A unique Adventure -->
+<div class="container">
+    <?php
 
+    if (have_posts()) :
+        while (have_posts()) : the_post();
+            the_content();
+        endwhile;
+    endif ?>
+</div>
 
 <section class="unique-adventure" style="background-color: #0d0d19;">
     <div class="container text-center pt-5 pb-5">
