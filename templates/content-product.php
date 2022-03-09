@@ -28,12 +28,12 @@ $attachments = maxart_post_format_product(); ?>
             <div class="swiper-pagination"></div>
         </div>
 
-        <div class="card-body w-100">
+        <div class="card-body w-100" style="padding: 5px;">
             <a href="<?php echo get_permalink($product->get_id()); ?>" style="text-decoration:none;">
-                <h5 class="card-title pb-4" style="color:#8016A5;"><?php echo $product->get_name(); ?></h5>
+                <h5 class="card-title pb-4" style="color:#8016A5;font-size: 1.1rem;padding-top: 3px;"><?php echo $product->get_name(); ?></h5>
             </a>
 
-            <div class="  d-flex flex-row justify-content-center  align-items-center">
+            <div class="  d-flex flex-row justify-content-center  align-items-center"style="margin: 5px;">
                 <h6 class="box-price load my-auto py-2 px-2 fw-bold " style="border:1px dashed #adb5bd;color:#8016A5;"><?php echo $product->get_price().' '.get_woocommerce_currency_symbol(); ?> / Day</h6>
                 <i class="fa-brands fa-whatsapp ms-auto" style="width:30px;height:30px;"></i>
                 <a href="<?php echo get_permalink($product->get_id()); ?>" class="btn ms-3 py-auto" style="background-color:#8016A5;color:white;">Book Now</a>
